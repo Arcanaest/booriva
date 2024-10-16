@@ -13,7 +13,7 @@ const ProductCard  = () => {
 
   return (
     <div className="wrapper">
-      <Title/>
+      <Title children={"Новинки"}/>
       <div className={styles.card__container}>
         {products.map(({ id, name, price, images }) => (
           <div key={id} className={styles.product__card}>

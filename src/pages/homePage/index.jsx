@@ -6,12 +6,14 @@ import InstaPage from "../../layout/instaPage/instaPage";
 import { Link } from "react-router-dom";
 import Header from "../../layout/header/header";
 import ProductCard from "../../components/productCard/productCard";
+import Categories from "./categories/categories";
 
 const HomePage = () => {
   return (
     <>
       <Header />
       <main>
+        <Categories/>
         <ProductCard/>
         <Link to="/catalog/000">
           <Button>СМОТРЕТЬ ВСЕ</Button>
