@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react";
-import styles from "./productCard.module.sass";
-import Title from "../title/title";
+import styles from "./productList.module.sass";
 
-const ProductCard  = () => {
-  let [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://65588446e93ca47020a966c9.mockapi.io/menuCatalog?menuId=000")
-      .then((res) => res.json())
-      .then((res) => setProducts(res[0].products.slice(0,4)));
-  }, []);
+const ProductList = ({ products }) => {
+  
 
   return (
     <div className="wrapper">
-      <Title/>
       <div className={styles.card__container}>
         {products.map(({ id, name, price, images }) => (
           <div key={id} className={styles.product__card}>
@@ -47,4 +38,4 @@ const ProductCard  = () => {
   );
 };
 
-export default ProductCard;
+export default ProductList;
