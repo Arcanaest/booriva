@@ -15,7 +15,7 @@ const HomePage = () => {
       <main>
         <Categories/>
         <ProductCard/>
-        <Link to="/catalog">
+        <Link to="/catalog/000">
           <Button>СМОТРЕТЬ ВСЕ</Button>
         </Link>
         <Banner />
