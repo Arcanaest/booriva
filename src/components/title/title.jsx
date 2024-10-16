@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
 import styles from "./title.module.sass";
 
-const Title = () => {
-  const [menuName, setMenuName] = useState("");
-  useEffect(() => {
-    fetch("https://65588446e93ca47020a966c9.mockapi.io/menuCatalog?menuId=000")
-      .then((res) => res.json())
-      .then((res) => {
-        setMenuName(res[0].menuName);
-      });
-  }, []);
-
+const Title = ({ children }) => {
   return (
     <div className={styles.title__container}>
-      <div className={styles.title__header}>{menuName}</div>
+      <div className={styles.title__header}>{children}</div>
       <div className={styles.small__text__wrapper}>
-        <div className={styles.small__text}>{menuName}</div>
+        <div className={styles.small__text}>{children}</div>
         <div className={styles.waveLine}>
           <svg
             width="60"
