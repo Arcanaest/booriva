@@ -15,14 +15,23 @@ const Footer = () => {
           <div className={styles.info}>
             <div className={styles.infoCaption}>ИНФО</div>
             <div className={styles.infoItems}>
-              <div className={styles.infoItem}>Контакты</div>
+              <div className={`${styles.infoItem} ${styles.contacts}`}>Контакты</div>
               <div className={styles.infoItem}>Система лояльности</div>
               <div className={styles.infoItem}>Обмен и возврат</div>
               <div className={styles.infoItem}>Доставка и оплата</div>
+              <div className={styles.socialLogos}>
+              <div className={styles.instaLogo}>
+                <img src={instaLogo} alt="" />
+              </div>
+              <div className={styles.Fblogo}>
+                <img src={fbLogo} alt="" />
+              </div>
+            </div>
             </div>
           </div>
           <div className={styles.location}>
-            <div className={styles.locationCaption}>НАШ АДРЕС</div>
+            <div className={styles.locationCaptionMax}>НАШ АДРЕС</div>
+            <div className={styles.locationCaption}>Контакты</div>
             <div className={styles.locationInfo}>
               <p>г.Грозный</p>
               <p>Пн-Вс: с 11:00 до 21:00</p>
@@ -30,7 +39,7 @@ const Footer = () => {
           </div>
           <div className={styles.social}>
             <div className={styles.socialCaption}>СОЦ. СЕТИ</div>
-            <div className={styles.socialLogos}>
+            <div className={styles.socialLogosMax}>
               <div className={styles.instaLogo}>
                 <img src={instaLogo} alt="" />
               </div>

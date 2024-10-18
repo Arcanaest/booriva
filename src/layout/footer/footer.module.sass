@@ -1,3 +1,7 @@
+body 
+    overflow-x: hidden
+
+
 .footerContainer
     background-color: var(--accent1)
     margin-top: 104px
@@ -8,8 +12,8 @@
 
     display: flex
     justify-content: space-between
-    gap: 110px
-    padding: 60px 150px
+    gap: 80px
+    padding: 60px 20px
     align-items: flex-start
    
 
@@ -22,12 +26,15 @@
     flex-direction: column
     gap: 10px
 
-.infoCaption, .locationCaption, .socialCaption, .feedbackCaption
+.infoCaption, .locationCaptionMax, .socialCaption, .feedbackCaption
     color: var(--accent2)
     font-family: 'Sunday Best', sans-serif
     font-size: 12px
     margin-bottom: 15px
 
+.feedbackCaption
+    text-decoration: underline
+    
 .locationInfo
     display: flex
     flex-direction: column
@@ -39,11 +46,50 @@
     justify-content: space-between
     gap:30px
 
-.socialLogos
+.socialLogos, .socialLogosMax
     display: flex
     justify-content: flex-start
     gap: 15px
 
 .feedbackText
     margin-bottom: 20px
+
+@media (min-width: 769px)
+    .socialLogos
+        display: none
+    .locationCaption
+        display: none
+    
+    
+@media (max-width: 768px)
+    .logo
+        display: none
+    .social
+        display: none
+    .footerBlock
+        gap: 70px
+    .locationCaptionMax
+        display: none
+    .contacts
+        display: none
+    .locationCaption
+        color: var(--accent2)
+        font-family: 'Sunday Best', sans-serif
+        font-size: 12px
+        margin-bottom: 15px
+@media (max-width: 480px)
+
+    .feedback
+        flex-direction: column
+    .footerBlock
+        gap:40px
+@media (max-width: 320px)
+
+    .feedback
+        flex-direction: row
+        grid-column: span 2
+    .footerBlock
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: auto
     
