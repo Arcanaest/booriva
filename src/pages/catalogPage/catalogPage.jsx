@@ -9,8 +9,10 @@ import styles from "./catalogPage.module.sass";
 const CatalogPage = () => {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
+  const [subcategories, setSubcategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
+  const [error, setError] = useState(null);
+
   const fetchProducts = async () => {
     try {
       const response = await fetch(
@@ -22,10 +24,28 @@ const CatalogPage = () => {
       const data = await response.json();
       setCategoryName(data[0].menuName);
       setProducts(data[0].products);
+      fetchSubcategories(data[0].menuId); // Запрос подкатегорий с использованием menuId
     } catch (err) {
       setError(err.message);
     }
   };
+
+  const fetchSubcategories = async (menuId) => {
+    try {
+      const response = await fetch(
+        `https://640ef1d54ed25579dc40e2a6.mockapi.io/categories?menuId=${menuId}`
+      );
+      if (!response.ok) {
+        throw new Error("Ошибка загрузки подкатегорий");
+      }
+      const data = await response.json();
+      setSubcategories(data[0].categories);
+      console.log(data[0].categories[0].name)
+    } catch (error) {
+      console.error("Error fetching subcategories:", error);
+    }
+  };
+
   useEffect(() => {
     fetchProducts();
   }, [id]);
@@ -35,7 +55,6 @@ const CatalogPage = () => {
   return (
     <>
       <Header />
-
       <main>
         <div className={"wrapper " + styles.catalog}>
           <div>
@@ -48,11 +67,14 @@ const CatalogPage = () => {
                 <div className={styles.subcategories}>
                   <h3 className={styles.left__side__title}>ПОДКАТЕГОРИИ:</h3>
                   <div className={styles.title__items}>
-                    <p className={styles.left__side__item}>Платья</p>
-                    <p className={styles.left__side__item}>Верх</p>
-                    <p className={styles.left__side__item}>Низ</p>
-                    <p className={styles.left__side__item}>Мелочи</p>
-                    <p className={styles.left__side__item}>Костюмы</p>
+                    {subcategories.map((subcategory) => (
+                      <p
+                        key={subcategory.id}
+                        className={styles.left__side__item}
+                      >
+                        {subcategory.name}
+                      </p>
+                    ))}
                   </div>
                 </div>
 
@@ -84,7 +106,7 @@ const CatalogPage = () => {
             </div>
           </div>
           <div className={styles.right}>
-            <div className={styles.banner}></div>
+            <div class={styles.banner}></div>
             <ProductList products={products} />
           </div>
         </div>
