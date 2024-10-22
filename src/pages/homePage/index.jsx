@@ -14,16 +14,16 @@ import News from "./news/news";
 const HomePage = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>
-        <Categories />
-        <News />
+        {/* <Categories />
+        <News /> */}
 
         <Link to="/catalog/000">
           <Button>СМОТРЕТЬ ВСЕ</Button>
         </Link>
         <Banner />
-        <BoorivaStore />
+        {/* <BoorivaStore /> */}
         <Marquee />
         <InstaPage />
       </main>

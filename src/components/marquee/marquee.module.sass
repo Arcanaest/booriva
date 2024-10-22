@@ -9,8 +9,10 @@
     border-bottom: 2px solid var(--accent2)
     background-color: var(--accent1)
     padding: 13px
+    height: 80px
     
     &Item
+      margin: auto
       font-size: 25px
       font-weight: 600
       color: var(--accent2)
@@ -24,4 +26,8 @@
   100%
     transform: translate(-160%, 0)
   
-  
+@media (max-width: 480px)
+  .floatLine
+    font-size: 16px
+    gap: 30px
+    height: 60px

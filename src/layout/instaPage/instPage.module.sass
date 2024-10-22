@@ -1,3 +1,8 @@
+img 
+    width:100%
+    max-width: 100%
+
+
 .instaPage
     max-width:1140px
     margin: 22px auto 0 auto
@@ -32,3 +37,40 @@
     
 .rightSectionText
     margin-left: 94px
+
+.instaPage2
+    display: none
+
+@media (max-width: 768px)
+    .instaPage2
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-template-rows: 30% 70%
+        height: 600px
+    .leftSection2
+        grid-row: 1 
+        grid-column: 1
+        height: 30%
+    .leftSectionImages
+        grid-row: 2 
+        grid-column: 1 
+        height: 70%
+        flex-wrap: wrap
+    .croppedImage, .regularImg
+        width:45%
+    .middleSectionImage
+        grid-row: 1 
+        grid-column: 2
+        height:388px
+    .middleImg
+        height: -webkit-fill-available
+    .rightSection2
+        grid-row: 2 
+        grid-column: 2
+        height: 120px
+        margin-top:230px
+    .instaPage
+        display: none
+    .leftSectionCaption
+        font-size: 35px
+    
