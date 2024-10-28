@@ -1,4 +1,4 @@
-const HurtSvg = ({ isSave }) => {
+const HeartSvg = ({ isSave }) => {
   return (
     <svg
       width="26"
@@ -19,4 +19,4 @@ const HurtSvg = ({ isSave }) => {
   );
 };
 
-export default HurtSvg;
+export default HeartSvg;

@@ -1,4 +1,4 @@
-import HurtSvg from "../../assets/svg/hurtSvg";
+import HeartSvg from "../../assets/svg/heartSvg";
 import styles from "./productCard.module.sass";
 
 const ProductCard = ({ id, name, image, price }) => {
@@ -12,7 +12,7 @@ const ProductCard = ({ id, name, image, price }) => {
         style={{ backgroundImage: `url(${image})` }}
       >
         <div className={styles.hurt} onClick={addProductToFavorite}>
-          <HurtSvg isSave={false} />
+          <HeartSvg isSave={false} />
         </div>
       </div>
       <div className={styles.flex}>
