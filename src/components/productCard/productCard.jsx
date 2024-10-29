@@ -11,7 +11,7 @@ const ProductCard = ({ id, name, image, price }) => {
         className={styles.image}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <div className={styles.hurt} onClick={addProductToFavorite}>
+        <div className={styles.heart} onClick={addProductToFavorite}>
           <HeartSvg isSave={false} />
         </div>
       </div>

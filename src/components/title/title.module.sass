@@ -1,11 +1,10 @@
-.title__container 
+.title__container
   position: relative
   display: flex
   flex-direction: column
   margin-bottom: 20px
 
-
-.title__header 
+.title__header
   font-family: Sunday Best
   font-size: 54px
   font-weight: 400
@@ -13,25 +12,31 @@
   color: var(--accent1)
   position: relative
 
-
-.small__text__wrapper 
+.small__text__wrapper
   display: flex
   align-items: center
   gap: 17px
-  margin-top: -30px 
+  margin-top: -30px
   position: relative
 
-
-.small__text 
+.small__text
   font-family: Montserrat
   font-size: 25px
   color: var(--main_black)
   text-transform: uppercase
   font-weight: 600
-  z-index: 1 
+  z-index: 1
 
+@media (max-width: 1191px)
+  .title__header
+    font-size: 46px
 
-
- 
-
-
+@media (max-width: 480px)
+  .title__header
+    font-size: 36px
+@media (max-width: 262px)
+  .title__header
+    font-size: 26px
+@media (max-width: 20px)
+  .title__header
+    font-size: 18px
