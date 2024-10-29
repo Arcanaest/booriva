@@ -40,7 +40,7 @@ const CatalogPage = () => {
       }
       const data = await response.json();
       setSubcategories(data[0].categories);
-      console.log(data[0].categories[0].name)
+      console.log(data[0].categories[0].name);
     } catch (error) {
       console.error("Error fetching subcategories:", error);
     }
@@ -62,8 +62,11 @@ const CatalogPage = () => {
               <div className={styles.title}>
                 <Title>{categoryName}</Title>
               </div>
-
-              <div className={styles.filters}>
+              <div
+                className={`${styles.filters} ${
+                  categoryName === "Новинки" ? styles.hidden : ""
+                }`}
+              >
                 <div className={styles.subcategories}>
                   <h3 className={styles.left__side__title}>ПОДКАТЕГОРИИ:</h3>
                   <div className={styles.title__items}>
@@ -77,7 +80,6 @@ const CatalogPage = () => {
                     ))}
                   </div>
                 </div>
-
                 <div className={styles.price}>
                   <h3 className={styles.left__side__title}>ЦЕНЫ:</h3>
                   <div className={styles.title__items}>
