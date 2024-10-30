@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import qs from "qs";
 import Header from "../../layout/header/header";
 import InstaPage from "../../layout/instaPage/instaPage";
 import Title from "../../components/title/title";
@@ -8,25 +9,50 @@ import styles from "./catalogPage.module.sass";
 
 const CatalogPage = () => {
   const { id } = useParams();
+  const location = useLocation();
   const [products, setProducts] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
+  const [subCategoryName, setSubCategoryName] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const fetchProducts = async () => {
+    const params = qs.parse(location.search.substring(1));
+
     try {
-      const response = await fetch(
-        `https://65588446e93ca47020a966c9.mockapi.io/menuCatalog?menuId=${id}`
-      );
-      if (!response.ok) {
-        throw new Error("Ошибка загрузки продуктов");
+      if (params.subcatid) {
+        const response = await fetch(
+          `https://65588446e93ca47020a966c9.mockapi.io/categoriesCatalog?categoryId=${params.subcatid}`
+        );
+        if (!response.ok) {
+          throw new Error("Ошибка загрузки продуктов");
+        }
+        const data = await response.json();
+        setCategoryName(data[0].menuName);
+        setProducts(data[0].products);
+        setSubCategoryName(data[0].categoryName);
+        fetchSubcategories(data[0].menuId); // Запрос подкатегорий с использованием menuId
+        console.log(1);
+      } else {
+        const response = await fetch(
+          `https://65588446e93ca47020a966c9.mockapi.io/menuCatalog?menuId=${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Ошибка загрузки продуктов");
+        }
+        const data = await response.json();
+        setCategoryName(data[0].menuName);
+        setSubCategoryName(data[0].menuName);
+        setProducts(data[0].products);
+        fetchSubcategories(data[0].menuId); // Запрос подкатегорий с использованием menuId
       }
-      const data = await response.json();
-      setCategoryName(data[0].menuName);
-      setProducts(data[0].products);
-      fetchSubcategories(data[0].menuId); // Запрос подкатегорий с использованием menuId
     } catch (err) {
       setError(err.message);
+      setCategoryName("");
+      setSubCategoryName("");
+      setProducts([]);
+      fetchSubcategories("");
     }
   };
 
@@ -40,7 +66,6 @@ const CatalogPage = () => {
       }
       const data = await response.json();
       setSubcategories(data[0].categories);
-      console.log(data[0].categories[0].name);
     } catch (error) {
       console.error("Error fetching subcategories:", error);
     }
@@ -48,7 +73,11 @@ const CatalogPage = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [id]);
+  }, [location]);
+
+  const toNavigate = (id) => {
+    navigate(`?subcatid=${id}`);
+  };
 
   if (error) return <p>Ошибка: {error}</p>;
 
@@ -60,7 +89,12 @@ const CatalogPage = () => {
           <div>
             <div className={styles.catalog__left__side}>
               <div className={styles.title}>
-                <Title>{categoryName}</Title>
+                <Title
+                  categoryName={categoryName}
+                  subCategoryName={subCategoryName}
+                >
+                  {categoryName}
+                </Title>
               </div>
               <div
                 className={`${styles.filters} ${
@@ -71,12 +105,13 @@ const CatalogPage = () => {
                   <h3 className={styles.left__side__title}>ПОДКАТЕГОРИИ:</h3>
                   <div className={styles.title__items}>
                     {subcategories.map((subcategory) => (
-                      <p
+                      <div
+                        onClick={() => toNavigate(subcategory.id)}
                         key={subcategory.id}
                         className={styles.left__side__item}
                       >
                         {subcategory.name}
-                      </p>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -108,7 +143,7 @@ const CatalogPage = () => {
             </div>
           </div>
           <div className={styles.right}>
-            <div class={styles.banner}></div>
+            <div className={styles.banner}></div>
             <ProductList products={products} />
           </div>
         </div>

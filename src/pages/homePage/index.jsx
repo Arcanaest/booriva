@@ -17,15 +17,15 @@ const HomePage = () => {
       <Header />
       <main>
         <Categories />
-        <News /> 
+        <News />
 
-        {/* <Link to="/catalog/000">
+        <Link to="/catalog/000">
           <Button>СМОТРЕТЬ ВСЕ</Button>
         </Link>
-        <Banner /> */}
-         {/* <BoorivaStore />  */}
-        {/* <Marquee />
-        <InstaPage /> */}
+        <Banner />
+        <BoorivaStore />
+        <Marquee />
+        <InstaPage />
       </main>
     </>
   );

@@ -1,11 +1,11 @@
 import styles from "./title.module.sass";
 
-const Title = ({ children }) => {
+const Title = ({ categoryName, subCategoryName }) => {
   return (
     <div className={styles.title__container}>
-      <div className={styles.title__header}>{children}</div>
+      <div className={styles.title__header}>{categoryName}</div>
       <div className={styles.small__text__wrapper}>
-        <div className={styles.small__text}>{children}</div>
+        <div className={styles.small__text}>{subCategoryName}</div>
         <div className={styles.waveLine}>
           <svg
             width="60"
