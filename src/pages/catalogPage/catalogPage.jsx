@@ -16,6 +16,9 @@ const CatalogPage = () => {
   const [subCategoryName, setSubCategoryName] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [filteredProducts, setFilteredProducts] = useState([]); // Фильтрация по цене
+  const [activePriceFilter, setActivePriceFilter] = useState("all"); // Узнаем активный фильтр
+  const [activeSubcategory, setActiveSubcategory] = useState(null); // Состояние для активной подкатегории
 
   const fetchProducts = async () => {
     const params = qs.parse(location.search.substring(1));
@@ -33,7 +36,6 @@ const CatalogPage = () => {
         setProducts(data[0].products);
         setSubCategoryName(data[0].categoryName);
         fetchSubcategories(data[0].menuId); // Запрос подкатегорий с использованием menuId
-        console.log(1);
       } else {
         const response = await fetch(
           `https://65588446e93ca47020a966c9.mockapi.io/menuCatalog?menuId=${id}`
@@ -75,8 +77,44 @@ const CatalogPage = () => {
     fetchProducts();
   }, [location]);
 
+  useEffect(() => {
+    // Фильтрация продуктов по цене
+    const params = qs.parse(location.search.substring(1));
+    if (params.subcatid) {
+      setActiveSubcategory(params.subcatid); // Установка активной подкатегории при загрузке
+    }
+    let filtered = [...products];
+
+    if (params.price) {
+      setActivePriceFilter(params.price); // Установка активного фильтра
+      if (params.price === "all") {
+        filtered = products; // Все продукты
+      } else if (params.price === "500") {
+        filtered = products.filter((product) => product.price <= 500);
+      } else if (params.price === "1000") {
+        filtered = products.filter(
+          (product) => product.price > 500 && product.price <= 1000
+        );
+      } else if (params.price === "1500") {
+        filtered = products.filter(
+          (product) => product.price > 1000 && product.price <= 1500
+        );
+      } else if (params.price === "1500+") {
+        filtered = products.filter((product) => product.price > 1500);
+      }
+    }
+
+    setFilteredProducts(filtered);
+  }, [products, location.search]);
+
   const toNavigate = (id) => {
     navigate(`?subcatid=${id}`);
+  };
+
+  const filterByPrice = (priceRange) => {
+    const params = qs.parse(location.search.substring(1));
+    const newParams = { ...params, price: priceRange };
+    navigate(`?${qs.stringify(newParams)}`);
   };
 
   if (error) return <p>Ошибка: {error}</p>;
@@ -108,7 +146,11 @@ const CatalogPage = () => {
                       <div
                         onClick={() => toNavigate(subcategory.id)}
                         key={subcategory.id}
-                        className={styles.left__side__item}
+                        className={`${styles.left__side__item} ${
+                          activeSubcategory === subcategory.id
+                            ? styles.active
+                            : ""
+                        }`}
                       >
                         {subcategory.name}
                       </div>
@@ -119,11 +161,46 @@ const CatalogPage = () => {
                   <h3 className={styles.left__side__title}>ЦЕНЫ:</h3>
                   <div className={styles.title__items}>
                     <ul type="circle">
-                      <li className={styles.left__side__item}>Все цены</li>
-                      <li className={styles.left__side__item}>до 500</li>
-                      <li className={styles.left__side__item}>500 — 1000</li>
-                      <li className={styles.left__side__item}>1000 — 1500</li>
-                      <li className={styles.left__side__item}>от 1500</li>
+                      <li
+                        onClick={() => filterByPrice("all")}
+                        className={`${styles.left__side__item} ${
+                          activePriceFilter === "all" ? styles.active : ""
+                        }`}
+                      >
+                        Все цены
+                      </li>
+                      <li
+                        onClick={() => filterByPrice("500")}
+                        className={`${styles.left__side__item} ${
+                          activePriceFilter === "500" ? styles.active : ""
+                        }`}
+                      >
+                        до 500
+                      </li>
+                      <li
+                        onClick={() => filterByPrice("1000")}
+                        className={`${styles.left__side__item} ${
+                          activePriceFilter === "1000" ? styles.active : ""
+                        }`}
+                      >
+                        500 — 1000
+                      </li>
+                      <li
+                        onClick={() => filterByPrice("1500")}
+                        className={`${styles.left__side__item} ${
+                          activePriceFilter === "1500" ? styles.active : ""
+                        }`}
+                      >
+                        1000 — 1500
+                      </li>
+                      <li
+                        onClick={() => filterByPrice("1500+")}
+                        className={`${styles.left__side__item} ${
+                          activePriceFilter === "1500+" ? styles.active : ""
+                        }`}
+                      >
+                        от 1500
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -144,7 +221,7 @@ const CatalogPage = () => {
           </div>
           <div className={styles.right}>
             <div className={styles.banner}></div>
-            <ProductList products={products} />
+            <ProductList products={filteredProducts} />
           </div>
         </div>
       </main>
