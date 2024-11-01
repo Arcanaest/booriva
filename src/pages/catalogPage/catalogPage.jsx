@@ -134,29 +134,33 @@ const CatalogPage = () => {
                   {categoryName}
                 </Title>
               </div>
-              <div
-                className={`${styles.filters} ${
-                  categoryName === "Новинки" ? styles.hidden : ""
-                }`}
-              >
-                <div className={styles.subcategories}>
-                  <h3 className={styles.left__side__title}>ПОДКАТЕГОРИИ:</h3>
-                  <div className={styles.title__items}>
-                    {subcategories.map((subcategory) => (
-                      <div
-                        onClick={() => toNavigate(subcategory.id)}
-                        key={subcategory.id}
-                        className={`${styles.left__side__item} ${
-                          activeSubcategory === subcategory.id
-                            ? styles.active
-                            : ""
-                        }`}
-                      >
-                        {subcategory.name}
+              <div>
+              <div className={styles.subcategoryWrapper}>
+                {categoryName !== "Новинки" && (
+                  <div className={styles.filters}>
+                    <div className={styles.subcategories}>
+                      <h3 className={styles.left__side__title}>
+                        ПОДКАТЕГОРИИ:
+                      </h3>
+                      <div className={styles.title__items}>
+                        {subcategories.map((subcategory) => (
+                          <div
+                            onClick={() => toNavigate(subcategory.id)}
+                            key={subcategory.id}
+                            className={`${styles.left__side__item} ${
+                              activeSubcategory === subcategory.id
+                                ? styles.active
+                                : ""
+                            }`}
+                          >
+                            {subcategory.name}
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
+                )}
+              </div>
                 <div className={styles.price}>
                   <h3 className={styles.left__side__title}>ЦЕНЫ:</h3>
                   <div className={styles.title__items}>

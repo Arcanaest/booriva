@@ -15,7 +15,7 @@ const News = () => {
   return (
     <div className={styles.news}>
       <div className="wrapper">
-        <Title>Новинки</Title>
+      <Title categoryName="Новинки" subCategoryName="Новинки" />
       </div>
       <div className={styles.grid}>
         {products.map(({ id, images, name, price }) => (
