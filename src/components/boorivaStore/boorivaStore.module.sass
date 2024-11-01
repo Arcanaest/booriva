@@ -32,3 +32,40 @@
     right: 95px
 .leftImg, .middleImg, .rightImg
     max-width: 100%
+
+@media (max-width: 768px)
+    .storeInfo
+        margin-bottom: 10px
+    .rightImg
+        right: 20px
+        width:175px
+    .leftImg
+        left: 91px
+        bottom: -100px
+    .storeCaption
+        font-size: 35px
+        top: 50px
+        line-height: 50px
+@media (max-width: 480px)
+    .rightImg, .leftImg
+        display: none
+    .storeCaption
+        font-size: 35px
+        left:40px 
+        top:100px
+    .storeInfo, .storeAdress
+        font-size: 12px
+    .storeSection
+        display: grid
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: 80% 20%  
+        margin:30px auto 60px auto   
+    .storeSectionMiddle
+        grid-row: 1
+        grid-column: 2
+    .storeSectionRight
+        grid-column: 2
+        grid-row:2
+        margin-top: auto
+
+
