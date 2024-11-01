@@ -23,7 +23,7 @@ const HomePage = () => {
           <Button>СМОТРЕТЬ ВСЕ</Button>
         </Link>
         <Banner />
-        {/* <BoorivaStore /> */}
+        <BoorivaStore />
         <Marquee />
         <InstaPage />
       </main>
