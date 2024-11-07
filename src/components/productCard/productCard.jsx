@@ -11,8 +11,8 @@ const ProductCard = ({ id, name, image, price }) => {
         className={styles.image}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <div className={styles.hurt} onClick={addProductToFavorite}>
-          <HeartSvg isSave={false} />
+        <div className={styles.heart} onClick={addProductToFavorite}>
+          <HeartSvg className={styles.heartSvg} isSave={false} />
         </div>
       </div>
       <div className={styles.flex}>
