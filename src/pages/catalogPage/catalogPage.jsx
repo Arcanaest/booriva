@@ -6,6 +6,7 @@ import InstaPage from "../../layout/instaPage/instaPage";
 import Title from "../../components/title/title";
 import ProductList from "../catalogPage/productList";
 import styles from "./catalogPage.module.sass";
+import ProductShowCase from "../productShowCase/productShowCase";
 
 const CatalogPage = () => {
   const { id } = useParams();
@@ -19,6 +20,9 @@ const CatalogPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]); // Фильтрация по цене
   const [activePriceFilter, setActivePriceFilter] = useState("all"); // Узнаем активный фильтр
   const [activeSubcategory, setActiveSubcategory] = useState(null); // Состояние для активной подкатегории
+  const navigateToProduct = (productId) => {
+    navigate(`/product/${productId}`);
+  };
 
   const fetchProducts = async () => {
     const params = qs.parse(location.search.substring(1));
@@ -225,7 +229,7 @@ const CatalogPage = () => {
           </div>
           <div className={styles.right}>
             <div className={styles.banner}></div>
-            <ProductList products={filteredProducts} />
+            <ProductList products={filteredProducts} onProductClick={navigateToProduct} />
           </div>
         </div>
       </main>

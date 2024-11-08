@@ -1,12 +1,12 @@
 import HeartSvg from "../../assets/svg/heartSvg";
 import styles from "./productCard.module.sass";
 
-const ProductCard = ({ id, name, image, price }) => {
+const ProductCard = ({ id, name, image, price, onClick }) => {
   const addProductToFavorite = () => {
     console.log(id);
   };
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={onClick}>
       <div
         className={styles.image}
         style={{ backgroundImage: `url(${image})` }}
