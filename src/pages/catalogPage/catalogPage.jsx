@@ -6,7 +6,6 @@ import InstaPage from "../../layout/instaPage/instaPage";
 import Title from "../../components/title/title";
 import ProductList from "../catalogPage/productList";
 import styles from "./catalogPage.module.sass";
-import ProductShowCase from "../productShowCase/productShowCase";
 
 const CatalogPage = () => {
   const { id } = useParams();
@@ -20,9 +19,6 @@ const CatalogPage = () => {
   const [filteredProducts, setFilteredProducts] = useState([]); // Фильтрация по цене
   const [activePriceFilter, setActivePriceFilter] = useState("all"); // Узнаем активный фильтр
   const [activeSubcategory, setActiveSubcategory] = useState(null); // Состояние для активной подкатегории
-  const navigateToProduct = (productId) => {
-    navigate(`/product/${productId}`);
-  };
 
   const fetchProducts = async () => {
     const params = qs.parse(location.search.substring(1));
@@ -139,32 +135,32 @@ const CatalogPage = () => {
                 </Title>
               </div>
               <div>
-              <div className={styles.subcategoryWrapper}>
-                {categoryName !== "Новинки" && (
-                  <div className={styles.filters}>
-                    <div className={styles.subcategories}>
-                      <h3 className={styles.left__side__title}>
-                        ПОДКАТЕГОРИИ:
-                      </h3>
-                      <div className={styles.title__items}>
-                        {subcategories.map((subcategory) => (
-                          <div
-                            onClick={() => toNavigate(subcategory.id)}
-                            key={subcategory.id}
-                            className={`${styles.left__side__item} ${
-                              activeSubcategory === subcategory.id
-                                ? styles.active
-                                : ""
-                            }`}
-                          >
-                            {subcategory.name}
-                          </div>
-                        ))}
+                <div className={styles.subcategoryWrapper}>
+                  {categoryName !== "Новинки" && (
+                    <div className={styles.filters}>
+                      <div className={styles.subcategories}>
+                        <h3 className={styles.left__side__title}>
+                          ПОДКАТЕГОРИИ:
+                        </h3>
+                        <div className={styles.title__items}>
+                          {subcategories.map((subcategory) => (
+                            <div
+                              onClick={() => toNavigate(subcategory.id)}
+                              key={subcategory.id}
+                              className={`${styles.left__side__item} ${
+                                activeSubcategory === subcategory.id
+                                  ? styles.active
+                                  : ""
+                              }`}
+                            >
+                              {subcategory.name}
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
                 <div className={styles.price}>
                   <h3 className={styles.left__side__title}>ЦЕНЫ:</h3>
                   <div className={styles.title__items}>
@@ -229,7 +225,17 @@ const CatalogPage = () => {
           </div>
           <div className={styles.right}>
             <div className={styles.banner}></div>
-            <ProductList products={filteredProducts} onProductClick={navigateToProduct} />
+            <div className={styles.productList}>
+              {filteredProducts.map((product) => (
+                <Link
+                  to={`/product/${product.id}`}
+                  key={product.id}
+                  className={styles.productLink}
+                >
+                  <ProductList products={[product]} />
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </main>
