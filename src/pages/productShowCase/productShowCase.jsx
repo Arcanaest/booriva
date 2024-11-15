@@ -4,6 +4,7 @@ import { Button } from "../../components/button/button";
 import InstaPage from "../../layout/instaPage/instaPage";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Slider from "./slider/slider";
 
 const ProductShowCase = () => {
   const { id } = useParams();
@@ -17,12 +18,9 @@ const ProductShowCase = () => {
   return (
     <div>
       <Header />
-      <div className={"wrapper " + styles.showCase_elements }>
+      <div className={"wrapper " + styles.showCase_elements}>
         <div className={styles.showCase_right}>
-          <img
-            src={showCase.images && showCase.images[0]}
-            alt={showCase.name}
-          />
+          {showCase.images && <Slider images={showCase.images} />}
         </div>
         <div className={styles.showCase_left}>
           <h3 className={styles.showCase_name}>{showCase.name}</h3>
@@ -34,7 +32,7 @@ const ProductShowCase = () => {
             <p className={styles.showCase_size}>M — L</p>
             <p className={styles.showCase_size}>L — XL</p>
           </div>
-          <Button className={styles.showCase_btn}>  В корзину</Button>
+          <Button className={styles.showCase_btn}> В корзину</Button>
           <p className={styles.showCase_desc}>{showCase.desc}</p>
           <p className={styles.showCase_details}>{showCase.details}</p>
         </div>

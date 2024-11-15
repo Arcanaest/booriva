@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import qs from "qs";
 import Header from "../../layout/header/header";
 import InstaPage from "../../layout/instaPage/instaPage";
@@ -110,6 +110,7 @@ const CatalogPage = () => {
   const toNavigate = (id) => {
     navigate(`?subcatid=${id}`);
   };
+  console.log(filteredProducts);
 
   const filterByPrice = (priceRange) => {
     const params = qs.parse(location.search.substring(1));
@@ -226,15 +227,7 @@ const CatalogPage = () => {
           <div className={styles.right}>
             <div className={styles.banner}></div>
             <div className={styles.productList}>
-              {filteredProducts.map((product) => (
-                <Link
-                  to={`/product/${product.id}`}
-                  key={product.id}
-                  className={styles.productLink}
-                >
-                  <ProductList products={[product]} />
-                </Link>
-              ))}
+              <ProductList products={filteredProducts} />
             </div>
           </div>
         </div>
