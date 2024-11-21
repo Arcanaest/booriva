@@ -40,7 +40,9 @@ const Header = () => {
             </div>
 
             <div>
-              <BoorivaLogoSvg></BoorivaLogoSvg>
+              <Link to="/">
+                <BoorivaLogoSvg></BoorivaLogoSvg>
+              </Link>
             </div>
 
             <div className={styles.nav__right}>
@@ -52,7 +54,9 @@ const Header = () => {
               </div>
               <div className={styles.nav__righ__icons}>
                 <div>
-                  <LikeSvg></LikeSvg>
+                  <Link to="/FavoritesPage">
+                    <LikeSvg></LikeSvg>
+                  </Link>
                 </div>
                 <div>
                   <BagSvg></BagSvg>
