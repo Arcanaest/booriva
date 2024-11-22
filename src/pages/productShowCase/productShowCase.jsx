@@ -5,6 +5,7 @@ import InstaPage from "../../layout/instaPage/instaPage";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Slider from "./slider/slider";
+import Advantages from "../../components/advantages/advantages";
 
 const ProductShowCase = () => {
   const { id } = useParams();
@@ -32,12 +33,14 @@ const ProductShowCase = () => {
             <p className={styles.showCase_size}>M — L</p>
             <p className={styles.showCase_size}>L — XL</p>
           </div>
-          <Button className={styles.showCase_btn}> В корзину</Button>
+          <div className={styles.showCase_btn}>
+            <Button> В корзину</Button>
+          </div>
           <p className={styles.showCase_desc}>{showCase.desc}</p>
           <p className={styles.showCase_details}>{showCase.details}</p>
         </div>
       </div>
-
+      <Advantages />
       <InstaPage />
     </div>
   );

@@ -40,7 +40,9 @@ const Header = () => {
             </div>
 
             <div>
+            <Link to="/" >
               <BoorivaLogoSvg></BoorivaLogoSvg>
+              </Link>
             </div>
 
             <div className={styles.nav__right}>
