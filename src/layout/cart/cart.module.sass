@@ -1,0 +1,33 @@
+.wrapper
+    height: 100vh
+    display: flex
+    position: fixed
+    width: 100%
+    background-color: rgba(0, 0, 0, .77)
+    top: 0
+    left: 0
+    z-index: 5
+
+.wrapper_close
+    pointer-events: none
+    opacity: 0
+    z-index: -1
+
+.cart__wrapper
+    height: 100%
+    width: 518px
+    background-color: #fff
+    transition: .4s
+
+.background
+    width: calc(100% - 518px)
+    height: 100%
+    pointer-events: all
+
+.close
+    pointer-events: none
+    transform: translateX(100%)
+
+.open
+    pointer-events: all
+    transform: translateX(0)

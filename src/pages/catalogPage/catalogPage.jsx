@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import qs from "qs";
-import Header from "../../layout/header/header";
 import InstaPage from "../../layout/instaPage/instaPage";
 import Title from "../../components/title/title";
 import ProductList from "../catalogPage/productList";
@@ -122,7 +121,6 @@ const CatalogPage = () => {
 
   return (
     <>
-      <Header />
       <main>
         <div className={"wrapper " + styles.catalog}>
           <div>
