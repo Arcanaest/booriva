@@ -1,7 +1,8 @@
-import AdvantagesCatSvg from "../../assets/svg/advantagesCatSvg";
-import AdvantagexBoxflySvg from "../../assets/svg/advantagesBoxflySvg";
-import AdvantagesGivemoneySvg from "../../assets/svg/advantagesGivemoneySvg";
 import styles from "./advantages.module.sass";
+import AdvantagesCatSvg from "../../assets/svg/advantagesCatSvg";
+import AdvantagesBoxflySvg from "../../assets/svg/advantagesBoxflySvg";
+import AdvantagesGivemoneySvg from "../../assets/svg/advantagesGivemoneySvg";
+
 
 const Advantages = () => {
   return (
@@ -17,7 +18,7 @@ const Advantages = () => {
       </div>
       <div className={styles.advantages_items}>
         <div className={styles.advantages_icon}>
-          <AdvantagexBoxflySvg></AdvantagexBoxflySvg>
+          <AdvantagesBoxflySvg></AdvantagesBoxflySvg>
         </div>
         <div className={styles.advantages_text}>
           <p className={styles.advantages_bigText}>Легкий возврат/обмен</p>

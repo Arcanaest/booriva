@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Slider from "./slider/slider";
 import Advantages from "../../components/advantages/advantages";
+import ProductCard from "../../components/productCard/productCard";
 
 const ProductShowCase = () => {
   const { id } = useParams();
@@ -28,10 +29,10 @@ const ProductShowCase = () => {
           <p className={styles.showCase_price}>{showCase.price}₽</p>
           <p className={styles.showCase_choise}>Выбрать размер:</p>
           <div className={styles.showCase_sizes}>
-            <p className={styles.showCase_size}>XS — S</p>
-            <p className={styles.showCase_size}>S — M</p>
-            <p className={styles.showCase_size}>M — L</p>
-            <p className={styles.showCase_size}>L — XL</p>
+            <p className={styles.showCase_size}>XS — S</p>
+            <p className={styles.showCase_size}>S — M</p>
+            <p className={styles.showCase_size}>M — L</p>
+            <p className={styles.showCase_size}>L — XL</p>
           </div>
           <div className={styles.showCase_btn}>
             <Button> В корзину</Button>
@@ -41,6 +42,7 @@ const ProductShowCase = () => {
         </div>
       </div>
       <Advantages />
+      <ProductCard/>
       <InstaPage />
     </div>
   );

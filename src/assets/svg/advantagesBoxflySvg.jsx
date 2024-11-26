@@ -1,4 +1,4 @@
-const AdvantagexBoxflySvg = () => {
+const AdvantagesBoxflySvg = () => {
   <svg
     width="71"
     height="86"
@@ -36,4 +36,4 @@ const AdvantagexBoxflySvg = () => {
     />
   </svg>;
 };
-export default AdvantagexBoxflySvg;
+export default AdvantagesBoxflySvg;
