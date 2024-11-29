@@ -1,33 +1,61 @@
 import Header from "../../layout/header/header";
 import InstaPage from "../../layout/instaPage/instaPage";
+import ProductCard from "../../components/productCard/productCard";
 import ProductList from "../catalogPage/productList";
 import Title from "../../components/title/title";
 import { Button } from "../../components/button/button";
 import { Link } from "react-router-dom";
-import ProductCard from "../../components/productCard/productCard";
 import BrokenHeart from "../../../public/heart.png";
 import Exchange from "../../../public/exchange.png";
 import Delivery from "../../../public/delivery.png";
 import Madein from "../../../public/madein.png";
+import { useState } from "react";
 import styles from "./favoritesPage.module.sass";
 
-const FavoritesPage = () => {
+const FavoritesPage = ({ products }) => {
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem("favorites");
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
+
+  const favoriteProducts = products.filter((product) =>
+    favorites.includes(product.id)
+  );
+
   return (
     <div>
       <Header />
       <Title
-        categoryName="CПИСОК ЖЕЛАНИЙ" subCategoryName="ТВОЙ ТАЙНЫЙ СПИСОК ЖЕЛАНИЙ"
+        categoryName="CПИСОК ЖЕЛАНИЙ"
+        subCategoryName="ТВОЙ ТАЙНЫЙ СПИСОК ЖЕЛАНИЙ"
       />
-      <div className={styles.img}>
-        <img className={styles.heart} src={BrokenHeart} alt="brokenHeart" />
-      </div>
-
-      <p className={styles.text}>
-        Похоже тебе еще ничего не запало в сердечко....
-      </p>
-      <Link to="/">
-        <Button>НА ГЛАВНУЮ</Button>
-      </Link>
+      {favoriteProducts.length === 0 ? (
+        <div>
+          <div className={styles.img}>
+            <img className={styles.heart} src={BrokenHeart} alt="brokenHeart" />
+          </div>
+          <p className={styles.text}>
+            Похоже тебе еще ничего не запало в сердечко....
+          </p>
+          <Link to="/">
+            <Button>НА ГЛАВНУЮ</Button>
+          </Link>
+        </div>
+      ) : (
+        <div>
+          {favoriteProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              price={product.price}
+              image={product.images[0]}
+              isFavoriteProp={true} // Все продукты на странице избранного будут любимыми
+              onToggleFavorite={() => {}} // Можно оставить пустым // или добавить логику, если нужно
+            />
+          ))}
+        </div>
+      )}
       <div className={"wrapper " + styles.conditions}>
         <div className={styles.delivery}>
           <img src={Delivery} alt="" />
