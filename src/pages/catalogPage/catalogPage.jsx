@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import qs from "qs";
 import Header from "../../layout/header/header";
@@ -8,7 +8,7 @@ import Sidebar from "./Sidebar";
 import Title from "../../components/title/title"; // Импортируем Title
 import styles from "./catalogPage.module.sass";
 
-const CatalogPage = () => {
+const CatalogPage = ({ favorites, setFavorites }) => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
@@ -142,7 +142,11 @@ const CatalogPage = () => {
           <div className={styles.right}>
             <div className={styles.banner}></div>
             {filteredProducts && filteredProducts.length > 0 ? (
-              <ProductList products={filteredProducts} />
+              <ProductList
+                products={filteredProducts}
+                setFavorites={setFavorites}
+                favorites={favorites}
+              />
             ) : (
               <div>No products available</div>
             )}

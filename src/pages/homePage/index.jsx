@@ -5,19 +5,16 @@ import BoorivaStore from "../../components/boorivaStore/boorivaStore";
 import InstaPage from "../../layout/instaPage/instaPage";
 import { Link } from "react-router-dom";
 import Header from "../../layout/header/header";
-import ProductCard from "../../components/productCard/productCard";
 import Categories from "./categories/categories";
-
-import styles from "./homePage.module.sass";
 import News from "./news/news";
 
-const HomePage = () => {
+const HomePage = ({ favorites, setFavorites }) => {
   return (
     <>
       <Header />
       <main>
         <Categories />
-        <News />
+        <News favorites={favorites} setFavorites={setFavorites} />
 
         <Link to="/catalog/000">
           <Button>СМОТРЕТЬ ВСЕ</Button>

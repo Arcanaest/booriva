@@ -8,21 +8,17 @@ import BrokenHeart from "../../../public/heart.png";
 import styles from "./favoritesPage.module.sass";
 import { useState, useEffect } from "react";
 
-const FavoritesPage = () => {
-  const [favorites, setFavorites] = useState(() => {
-    const savedFavorites = localStorage.getItem("favorites");
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
-  });
-
+const FavoritesPage = ({ favorites, setFavorites }) => {
   const [favoriteProducts, setFavoriteProducts] = useState([]);
 
   useEffect(() => {
     const fetchFavoriteProducts = async () => {
       if (favorites.length > 0) {
         const products = await Promise.all(
-          favorites.map(id =>
-            fetch(`https://6569c6cede53105b0dd7a33a.mockapi.io/product/${id}`)
-              .then(response => response.json())
+          favorites.map((id) =>
+            fetch(
+              `https://6569c6cede53105b0dd7a33a.mockapi.io/product/${id}`
+            ).then((response) => response.json())
           )
         );
         setFavoriteProducts(products);
@@ -33,22 +29,6 @@ const FavoritesPage = () => {
 
     fetchFavoriteProducts();
   }, [favorites]);
-
-  const handleToggleFavorite = (id) => {
-    const isFavorite = favorites.includes(id); // Проверяем, находится ли товар в избранном
-    const updatedFavorites = isFavorite
-      ? favorites.filter(favoriteId => favoriteId !== id) // Удаляем из избранного
-      : [...favorites, id]; // Добавляем в избранное
-
-    setFavorites(updatedFavorites);
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-
-    // Обновляем список товаров
-    if (isFavorite) {
-      // Если товар был в избранном, фильтруем его из списка
-      setFavoriteProducts(prevProducts => prevProducts.filter(product => product.id !== id));
-    }
-  };
 
   return (
     <div>
@@ -78,8 +58,8 @@ const FavoritesPage = () => {
               name={product.name}
               price={product.price}
               image={product.images[0]}
-              isFavoriteProp={true}
-              onToggleFavorite={handleToggleFavorite} // Передаем функцию
+              setFavorites={setFavorites}
+              favorites={favorites}
             />
           ))}
         </div>

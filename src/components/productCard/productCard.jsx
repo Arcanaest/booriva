@@ -1,20 +1,16 @@
-import React, { useState } from "react";
 import HeartSvg from "../../assets/svg/heartSvg";
 import styles from "./productCard.module.sass";
 
-const ProductCard = ({
-  id,
-  name,
-  image,
-  price,
-  isFavoriteProp,
-  onToggleFavorite,
-}) => {
-  const [isFavorite, setIsFavorite] = useState(isFavoriteProp);
+const ProductCard = ({ id, name, image, price, setFavorites, favorites }) => {
+  const handleToggleFavorite = (id) => {
+    console.log(favorites, id);
 
-  const handleToggleFavorite = () => {
-    setIsFavorite(!isFavorite);
-    onToggleFavorite(id, !isFavorite);
+    if (favorites) {
+      const updatedFavorites = !favorites.includes(id)
+        ? [...favorites, id]
+        : favorites.filter((favoriteId) => favoriteId !== id);
+      setFavorites(updatedFavorites);
+    }
   };
 
   return (
@@ -23,8 +19,8 @@ const ProductCard = ({
         className={styles.image}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <div className={styles.heart} onClick={handleToggleFavorite}>
-          <HeartSvg className={styles.heartSvg} isSave={isFavorite} />
+        <div className={styles.heart} onClick={() => handleToggleFavorite(id)}>
+          <HeartSvg isSave={favorites && favorites.includes(id)} />
         </div>
       </div>
       <div className={styles.flex}>
