@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Empty from "./empty/empty";
 import styles from "./cart.module.sass";
 
 const Cart = ({ setIsCartOpen, isCartOpen, cartItems }) => {
@@ -16,7 +17,7 @@ const Cart = ({ setIsCartOpen, isCartOpen, cartItems }) => {
         }
       >
         {cartItems.length === 0
-          ? "Корзина пуста"
+          ? <Empty/>
           : cartItems.map(({ product, count }) => (
               <Link to={`/product/${product.id}`} key={product.id}>
                 <p>

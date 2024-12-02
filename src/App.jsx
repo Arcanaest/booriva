@@ -5,6 +5,7 @@ import CatalogPage from "./pages/catalogPage/catalogPage";
 import ProductShowCase from "./pages/productShowCase/productShowCase";
 import Header from "./layout/header/header";
 import Cart from "./layout/cart/cart";
+import Empty from "./layout/cart/empty/empty";
 import { useEffect, useState } from "react";
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
             />
           }
         />
+ 
       </Routes>
       <Footer />
     </div>
