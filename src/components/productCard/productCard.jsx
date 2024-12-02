@@ -5,8 +5,9 @@ const ProductCard = ({ id, name, image, price }) => {
   const addProductToFavorite = () => {
     console.log(id);
   };
+
   return (
-    <div className={styles.card} >
+    <div className={styles.card}>
       <div
         className={styles.image}
         style={{ backgroundImage: `url(${image})` }}
