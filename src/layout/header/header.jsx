@@ -53,7 +53,7 @@ const Header = () => {
                 <span className={styles.input}>Поиск</span>
               </div>
               <div className={styles.nav__righ__icons}>
-                <div>
+                <div className={styles.heart}>
                   <Link to="/FavoritesPage">
                     <LikeSvg></LikeSvg>
                   </Link>

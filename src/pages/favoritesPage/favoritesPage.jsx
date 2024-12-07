@@ -50,7 +50,7 @@ const FavoritesPage = ({ favorites, setFavorites }) => {
           </Link>
         </div>
       ) : (
-        <div>
+        <div className={styles.cardContainer}>
           {favoriteProducts.map((product) => (
             <ProductCard
               key={product.id}

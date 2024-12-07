@@ -30,5 +30,17 @@
 .lowerText
     text-transform: uppercase
     text-align: center
+.cardContainer
+    display: flex
+    gap:10px
+    flex-wrap: wrap
+    justify-content: space-between
 
-
+.cardContainer > div 
+    flex: 1 1 calc(33.33% - 10px)
+    box-sizing: border-box
+    max-width: 370px
+    max-height: 600px
+@media (max-width: 768px) 
+    .cardContainer > div 
+        flex: 1 1 calc(50% - 10px)
