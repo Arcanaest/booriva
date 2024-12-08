@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isVisibles, setIsVisibles] = useState(false);
   const [cartItems, setCartItems] = useState(
     localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
   );
@@ -34,6 +35,7 @@ const App = () => {
         isCartOpen={isCartOpen}
         cartItems={cartItems}
       />
+ {isVisibles && <Empty setIsVisibles={setIsVisibles} />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog/:id" element={<CatalogPage />} />
