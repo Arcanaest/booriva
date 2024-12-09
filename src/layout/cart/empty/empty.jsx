@@ -7,13 +7,13 @@ import styles from "./empty.module.sass";
 const Empty = ({ setIsVisibles }) => {
   return (
     <>
-     <div className={styles.exit_svg} onClick={() => setIsVisibles(false)}>
+      <div className={styles.exit_svg} onClick={() => setIsVisibles(false)}>
         <ExitSvg />
-        </div>
+      </div>
       <div className={styles.empty_container}>
-        <p className={styles.empty_title}>КОРЗИНА</p>
+        <h1 className={styles.empty_title}>КОРЗИНА</h1>
         <div className={styles.empty_svg}>
-        <EmptySvg />
+          <EmptySvg />
         </div>
         <p className={styles.empty_text}>
           Твоя корзина пуста, но это никогда не поздно исправить :)

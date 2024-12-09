@@ -34,8 +34,11 @@ const App = () => {
         setIsCartOpen={setIsCartOpen}
         isCartOpen={isCartOpen}
         cartItems={cartItems}
+        setCartItems={setCartItems}
+        setIsVisibles={setIsVisibles}
       />
- {isVisibles && <Empty setIsVisibles={setIsVisibles} />}
+      {isVisibles && <Empty setIsVisibles={setIsVisibles} />}
+      
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog/:id" element={<CatalogPage />} />
@@ -50,7 +53,6 @@ const App = () => {
             />
           }
         />
- 
       </Routes>
       <Footer />
     </div>
