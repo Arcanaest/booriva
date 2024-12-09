@@ -4,27 +4,18 @@ import Footer from "./layout/footer/footer";
 import CatalogPage from "./pages/catalogPage/catalogPage";
 import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const App = () => {
-  const [favorites, setFavorites] = useState(
-    localStorage.getItem("favorites")
-      ? JSON.parse(localStorage.getItem("favorites"))
-      : []
-  );
-
+  const favorites = useSelector((state) => state.favorites.favorites);
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
   return (
     <div>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage favorites={favorites} setFavorites={setFavorites} />
-          }
-        />
-        <Route
+        <Route path="/" element={<HomePage />} />
+        {/* <Route
           path="/catalog/:id"
           element={
             <CatalogPage favorites={favorites} setFavorites={setFavorites} />
@@ -41,7 +32,7 @@ const App = () => {
           element={
             <FavoritesPage favorites={favorites} setFavorites={setFavorites} />
           }
-        />
+        /> */}
       </Routes>
       <Footer />
     </div>

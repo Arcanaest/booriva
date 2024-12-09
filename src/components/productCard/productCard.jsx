@@ -1,7 +1,11 @@
+import { useDispatch, useSelector } from "react-redux";
 import HeartSvg from "../../assets/svg/heartSvg";
 import styles from "./productCard.module.sass";
+import { setFavorites } from "../../redux/favoritesSlice/favoritesSlice";
 
-const ProductCard = ({ id, name, image, price, setFavorites, favorites }) => {
+const ProductCard = ({ id, name, image, price }) => {
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const dispatch = useDispatch();
   const handleToggleFavorite = (id) => {
     console.log(favorites, id);
 
@@ -9,7 +13,7 @@ const ProductCard = ({ id, name, image, price, setFavorites, favorites }) => {
       const updatedFavorites = !favorites.includes(id)
         ? [...favorites, id]
         : favorites.filter((favoriteId) => favoriteId !== id);
-      setFavorites(updatedFavorites);
+      dispatch(setFavorites(updatedFavorites));
     }
   };
 

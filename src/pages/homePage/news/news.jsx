@@ -4,7 +4,7 @@ import Title from "../../../components/title/title";
 import styles from "./news.module.sass";
 import { useState } from "react";
 
-const News = ({ favorites, setFavorites }) => {
+const News = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -26,8 +26,6 @@ const News = ({ favorites, setFavorites }) => {
             name={name}
             price={price}
             id={id}
-            setFavorites={setFavorites}
-            favorites={favorites}
           />
         ))}
       </div>

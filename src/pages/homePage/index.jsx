@@ -8,13 +8,13 @@ import Header from "../../layout/header/header";
 import Categories from "./categories/categories";
 import News from "./news/news";
 
-const HomePage = ({ favorites, setFavorites }) => {
+const HomePage = () => {
   return (
     <>
       <Header />
       <main>
         <Categories />
-        <News favorites={favorites} setFavorites={setFavorites} />
+        <News />
 
         <Link to="/catalog/000">
           <Button>СМОТРЕТЬ ВСЕ</Button>
