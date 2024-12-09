@@ -20,12 +20,23 @@ const Cart = ({ setIsCartOpen, isCartOpen, cartItems }) => {
           ? <Empty/>
           : cartItems.map(({ product, count }) => (
               <Link to={`/product/${product.id}`} key={product.id}>
-                <p>
+                 <div className={styles.cartItem}>
+                <img 
+                  src={product.images} 
+                  alt={product.name} 
+                  className={styles.prod_image}
+                />
+                <p className={styles.prod_name}>
                   {product.name}: {count}
                 </p>
+                <p className={styles.prod_price}>
+                  {product.price}₽
+                </p>
+                </div>
               </Link>
             ))}
       </div>
+
     </div>
   );
 };
