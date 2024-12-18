@@ -40,7 +40,9 @@ const Header = () => {
             </div>
 
             <div>
-              <BoorivaLogoSvg></BoorivaLogoSvg>
+              <Link to="/">
+                <BoorivaLogoSvg></BoorivaLogoSvg>
+              </Link>
             </div>
 
             <div className={styles.nav__right}>
@@ -51,8 +53,10 @@ const Header = () => {
                 <span className={styles.input}>Поиск</span>
               </div>
               <div className={styles.nav__righ__icons}>
-                <div>
-                  <LikeSvg></LikeSvg>
+                <div className={styles.heart}>
+                  <Link to="/FavoritesPage">
+                    <LikeSvg></LikeSvg>
+                  </Link>
                 </div>
                 <div>
                   <BagSvg></BagSvg>

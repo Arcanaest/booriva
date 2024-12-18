@@ -1,6 +1,6 @@
 .header
     border-bottom: 1px solid var(--accent1)
-    position: fixed
+    position: sticky
     z-index: 5
     width: 100%
     top: 0px
@@ -90,3 +90,10 @@
         flex-direction: column
         gap: 10px
         align-items: flex-start
+
+.heart
+    cursor: pointer
+    &:hover path:first-child
+        fill: #F40000
+    path
+        transition: .2s
