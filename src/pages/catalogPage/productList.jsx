@@ -1,9 +1,14 @@
 import ProductCard from "../../components/productCard/productCard";
 import styles from "./productList.module.sass";
+import { useDispatch, useSelector } from "react-redux";
 
-const ProductList = ({ products, favorites, setFavorites }) => {
+
+const ProductList = ({ products }) => {
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const dispatch = useDispatch();
   return (
     <div className={styles.container}>
+      {" "}
       {products.map(({ id, name, price, images }) => (
         <ProductCard
           key={id}
@@ -11,10 +16,9 @@ const ProductList = ({ products, favorites, setFavorites }) => {
           name={name}
           price={price}
           image={images[0]}
-          setFavorites={setFavorites}
-          favorites={favorites}
+
         />
-      ))}
+      ))}{" "}
     </div>
   );
 };

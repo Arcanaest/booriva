@@ -19,18 +19,22 @@ const ProductCard = ({ id, name, image, price }) => {
 
   return (
     <div className={styles.card}>
+      {" "}
       <div
         className={styles.image}
         style={{ backgroundImage: `url(${image})` }}
       >
+        {" "}
         <div className={styles.heart} onClick={() => handleToggleFavorite(id)}>
-          <HeartSvg isSave={favorites && favorites.includes(id)} />
-        </div>
-      </div>
+          {" "}
+          <HeartSvg isSave={favorites && favorites.includes(id)} />{" "}
+        </div>{" "}
+      </div>{" "}
       <div className={styles.flex}>
-        <div className={styles.name}>{name}</div>
-        <div className={styles.price}>{price} ₽</div>
-      </div>
+        {" "}
+        <div className={styles.name}>{name}</div>{" "}
+        <div className={styles.price}>{price} ₽</div>{" "}
+      </div>{" "}
     </div>
   );
 };
