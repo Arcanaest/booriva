@@ -59,7 +59,9 @@ const Header = () => {
                   </Link>
                 </div>
                 <div>
-                  <BagSvg></BagSvg>
+                  <Link to="/OrderPage">
+                    <BagSvg></BagSvg>
+                  </Link>
                 </div>
               </div>
             </div>
