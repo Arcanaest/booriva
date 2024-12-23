@@ -107,14 +107,14 @@ const CatalogPage = () => {
   }, [products, location.search]);
 
   const toNavigate = (id) => {
-    navigate("?subcatid=${id}");
+    navigate(`?subcatid=${id}`);
   };
   console.log(filteredProducts);
 
   const filterByPrice = (priceRange) => {
     const params = qs.parse(location.search.substring(1));
     const newParams = { ...params, price: priceRange };
-    navigate("?${qs.stringify(newParams)}");
+    navigate(`?${qs.stringify(newParams)}`);
   };
 
   if (error) return <p>Ошибка: {error}</p>;
