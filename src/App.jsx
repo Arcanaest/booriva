@@ -3,10 +3,12 @@ import HomePage from "./pages/homePage";
 import Footer from "./layout/footer/footer";
 import CatalogPage from "./pages/catalogPage/catalogPage";
 import ProductShowCase from "./pages/productShowCase/productShowCase";
+import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 import Header from "./layout/header/header";
 import Cart from "./layout/cart/cart";
 import Empty from "./layout/cart/empty/empty";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -14,7 +16,11 @@ const App = () => {
   const [cartItems, setCartItems] = useState(
     localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
   );
+
+  const favorites = useSelector((state) => state.favorites.favorites);
   const navigate = useNavigate();
+
+ 
   useEffect(() => {
     if (isCartOpen) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
@@ -27,6 +33,12 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
+
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
   return (
     <div>
       <Header setIsCartOpen={setIsCartOpen} />
@@ -53,6 +65,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/favoritesPage" element={<FavoritesPage />} />
       </Routes>
       <Footer />
     </div>
@@ -60,3 +73,4 @@ const App = () => {
 };
 
 export default App;
+
