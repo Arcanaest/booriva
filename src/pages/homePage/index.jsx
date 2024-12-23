@@ -4,6 +4,7 @@ import { Button } from "../../components/button/button";
 import BoorivaStore from "../../components/boorivaStore/boorivaStore";
 import InstaPage from "../../layout/instaPage/instaPage";
 import { Link } from "react-router-dom";
+import Header from "../../layout/header/header";
 import Categories from "./categories/categories";
 import News from "./news/news";
 

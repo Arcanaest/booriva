@@ -43,6 +43,7 @@ const Header = ({ setIsCartOpen }) => {
             <div>
               <Link to="/">
                 <BoorivaLogoSvg />
+
               </Link>
             </div>
 
@@ -54,8 +55,10 @@ const Header = ({ setIsCartOpen }) => {
                 <span className={styles.input}>Поиск</span>
               </div>
               <div className={styles.nav__righ__icons}>
-                <div>
-                  <LikeSvg />
+                <div className={styles.heart}>
+                  <Link to="/FavoritesPage">
+                    <LikeSvg></LikeSvg>
+                  </Link>
                 </div>
                 <div
                   className={styles.cart}
