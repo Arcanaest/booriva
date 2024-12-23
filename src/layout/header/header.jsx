@@ -1,5 +1,4 @@
 import { useState } from "react";
-import styles from "./header.module.sass";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import GpsSvg from "../../assets/svg/gpsSvg";
@@ -9,7 +8,9 @@ import InputSvg from "../../assets/svg/inputSvg";
 import LikeSvg from "../../assets/svg/likeSvg";
 import BagSvg from "../../assets/svg/bagSvg";
 
-const Header = () => {
+import styles from "./header.module.sass";
+
+const Header = ({ setIsCartOpen }) => {
   let [menu, setMenu] = useState([]);
   useEffect(() => {
     fetch("https://640ef1d54ed25579dc40e2a6.mockapi.io/menu")
@@ -24,7 +25,7 @@ const Header = () => {
             <div className={styles.nav__left}>
               <div className={styles.adress__nav}>
                 <div>
-                  <GpsSvg></GpsSvg>
+                  <GpsSvg />
                 </div>
                 <p className={styles.nav__left__item}>
                   Грозный, проспект Кадырова 216
@@ -33,7 +34,7 @@ const Header = () => {
 
               <div className={styles.number__nav}>
                 <div>
-                  <TelSvg></TelSvg>
+                  <TelSvg />
                 </div>
                 <p className={styles.nav__left__item}>+8(999) 999 99 99</p>
               </div>
@@ -41,14 +42,15 @@ const Header = () => {
 
             <div>
               <Link to="/">
-                <BoorivaLogoSvg></BoorivaLogoSvg>
+                <BoorivaLogoSvg />
+
               </Link>
             </div>
 
             <div className={styles.nav__right}>
               <div className={styles.nav__right__input}>
                 <div>
-                  <InputSvg></InputSvg>
+                  <InputSvg />
                 </div>
                 <span className={styles.input}>Поиск</span>
               </div>
@@ -58,8 +60,11 @@ const Header = () => {
                     <LikeSvg></LikeSvg>
                   </Link>
                 </div>
-                <div>
-                  <BagSvg></BagSvg>
+                <div
+                  className={styles.cart}
+                  onClick={() => setIsCartOpen(true)}
+                >
+                  <BagSvg />
                 </div>
               </div>
             </div>

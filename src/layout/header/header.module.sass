@@ -5,8 +5,6 @@
     width: 100%
     top: 0px
     background-color: var(--white)
-  
-    
 
 .nav__down
     margin-bottom: 15px
@@ -18,7 +16,6 @@
     margin-top: 10px
     display: flex
     justify-content: space-between
-    
 
 .nav__item
     font-weight: 600
@@ -34,6 +31,10 @@
     display: flex
     gap: 40px
     align-items: center
+    @media (max-width: 1162px)
+        flex-direction: column
+        gap: 10px
+        align-items: flex-start
 
 .adress__nav
     display: flex
@@ -84,6 +85,13 @@
     align-items: center
     gap: 33px
 
+.cart
+    cursor: pointer
+    svg
+        stroke: #1F1F1F
+        transition: .2s
+    &:hover svg
+        stroke: var(--accent2)
     
 @media (max-width: 1162px)
     .nav__left
