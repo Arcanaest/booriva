@@ -9,7 +9,7 @@ import Cart from "./layout/cart/cart";
 import Empty from "./layout/cart/empty/empty";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import ProductList from "./pages/catalogPage/productList";
+
 
 
 const App = () => {
@@ -65,7 +65,7 @@ const App = () => {
               setCartItems={setCartItems}
               cartItems={cartItems}
               setIsCartOpen={setIsCartOpen}
-              products={favorites}
+           
             />
           }
         />

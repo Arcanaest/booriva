@@ -5,10 +5,14 @@ import { useParams } from "react-router-dom";
 import Slider from "./slider/slider";
 import Advantages from "../../components/advantages/advantages";
 import ProductCard from "../../components/productCard/productCard";
+import ProductList from "../catalogPage/productList";
 import styles from "./productShowCase.module.sass";
 
-
-const ProductShowCase = ({ setCartItems, cartItems, setIsCartOpen, products }) => {
+const ProductShowCase = ({
+  setCartItems,
+  cartItems,
+  setIsCartOpen,
+}) => {
   const { id } = useParams();
   const [showCase, setShowCase] = useState([]);
   const [btnValue, setBtnValue] = useState("В корзину");
@@ -59,17 +63,6 @@ const ProductShowCase = ({ setCartItems, cartItems, setIsCartOpen, products }) =
         </div>
       </div>
       <Advantages />
-      <div className={styles.showCase_grid}>
-        {products.map(({ id, images, name, price }) => (
-          <ProductCard
-            key={id}
-            image={images[0]}
-            name={name}
-            price={price}
-            id={id}
-          />
-        ))}
-      </div>
       <InstaPage />
     </div>
   );
