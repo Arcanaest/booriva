@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isVisibles, setIsVisibles] = useState(false);
   const [cartItems, setCartItems] = useState(
     localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []
   );
@@ -41,15 +40,15 @@ const App = () => {
 
   return (
     <div>
-      <Header setIsCartOpen={setIsCartOpen} />
+      <Header setIsCartOpen={setIsCartOpen} cartItems={cartItems}/>
       <Cart
         setIsCartOpen={setIsCartOpen}
         isCartOpen={isCartOpen}
         cartItems={cartItems}
         setCartItems={setCartItems}
-        setIsVisibles={setIsVisibles}
+
       />
-      {isVisibles && <Empty setIsVisibles={setIsVisibles} />}
+      {isCartOpen && <Empty setIsCartOpen={setIsCartOpen} />}
       
       <Routes>
         <Route path="/" element={<HomePage />} />

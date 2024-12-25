@@ -9,7 +9,6 @@ const Cart = ({
   setIsCartOpen,
   isCartOpen,
   cartItems,
-  setIsVisibles,
   setCartItems,
 }) => {
   return (
@@ -29,7 +28,7 @@ const Cart = ({
           <>
             <div
               className={styles.exitCart_svg}
-              onClick={() => setIsVisibles(false)}
+              onClick={() => setIsCartOpen(false)}
             >
               <ExitSvg />
             </div>

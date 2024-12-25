@@ -10,13 +10,15 @@ import BagSvg from "../../assets/svg/bagSvg";
 
 import styles from "./header.module.sass";
 
-const Header = ({ setIsCartOpen }) => {
+const Header = ({ setIsCartOpen, cartItems }) => {
   let [menu, setMenu] = useState([]);
   useEffect(() => {
     fetch("https://640ef1d54ed25579dc40e2a6.mockapi.io/menu")
       .then((res) => res.json())
       .then((res) => setMenu(res));
   }, []);
+
+  const cartItemCount = cartItems.reduce((total, { count }) => total + count, 0);
   return (
     <header className={styles.header}>
       <div className="wrapper">
@@ -65,6 +67,9 @@ const Header = ({ setIsCartOpen }) => {
                   onClick={() => setIsCartOpen(true)}
                 >
                   <BagSvg />
+                  {cartItemCount > 0 && (
+                  <div className={styles.cart__count}>{cartItemCount}</div>
+                )}
                 </div>
               </div>
             </div>

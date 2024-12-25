@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-
 import CardCloseSvg from "../../assets/svg/cardCloseSvg";
 import styles from "./cart.module.sass";
 
 const FullCart = ({ cartItems, setCartItems }) => {
-
-    const totalSum = cartItems.reduce(
-        (sum, { product, count }) => sum + product.price * count,
-        0
-      );
+  const totalSum = cartItems.reduce(
+    (sum, { product, count }) => sum + product.price * count,
+    0
+  );
 
   const removeFromCart = (productId) => {
     const updatedCart = cartItems.filter(
@@ -48,7 +46,7 @@ const FullCart = ({ cartItems, setCartItems }) => {
         ))}
       </div>
       <>
-      {cartItems.length !== 0 && (
+        {cartItems.length !== 0 && (
           <>
             <div className={styles.sum}>
               <p className={styles.sum_text}>
@@ -61,7 +59,6 @@ const FullCart = ({ cartItems, setCartItems }) => {
                 К оплате: <b>{totalSum}₽</b>
               </p>
             </div>
-            
           </>
         )}
       </>
