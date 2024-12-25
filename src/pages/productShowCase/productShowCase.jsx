@@ -1,4 +1,3 @@
-import styles from "./productShowCase.module.sass";
 import { Button } from "../../components/button/button";
 import InstaPage from "../../layout/instaPage/instaPage";
 import { useState, useEffect } from "react";
@@ -6,8 +5,10 @@ import { useParams } from "react-router-dom";
 import Slider from "./slider/slider";
 import Advantages from "../../components/advantages/advantages";
 import ProductCard from "../../components/productCard/productCard";
+import styles from "./productShowCase.module.sass";
 
-const ProductShowCase = ({ setCartItems, cartItems, setIsCartOpen }) => {
+
+const ProductShowCase = ({ setCartItems, cartItems, setIsCartOpen, products }) => {
   const { id } = useParams();
   const [showCase, setShowCase] = useState([]);
   const [btnValue, setBtnValue] = useState("В корзину");
@@ -58,7 +59,17 @@ const ProductShowCase = ({ setCartItems, cartItems, setIsCartOpen }) => {
         </div>
       </div>
       <Advantages />
-      <ProductCard/>
+      <div className={styles.showCase_grid}>
+        {products.map(({ id, images, name, price }) => (
+          <ProductCard
+            key={id}
+            image={images[0]}
+            name={name}
+            price={price}
+            id={id}
+          />
+        ))}
+      </div>
       <InstaPage />
     </div>
   );

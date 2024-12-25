@@ -38,7 +38,7 @@ const Cart = ({
           ""
         )}
         {cartItems.length === 0 ? (
-          <Empty />
+          <Empty setIsCartOpen={setIsCartOpen}/>
         ) : (
           <FullCart cartItems={cartItems} setCartItems={setCartItems} />
         )}

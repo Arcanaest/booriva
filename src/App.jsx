@@ -9,6 +9,8 @@ import Cart from "./layout/cart/cart";
 import Empty from "./layout/cart/empty/empty";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import ProductList from "./pages/catalogPage/productList";
+
 
 const App = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -48,7 +50,9 @@ const App = () => {
         setCartItems={setCartItems}
 
       />
-      {isCartOpen && <Empty setIsCartOpen={setIsCartOpen} />}
+      {isCartOpen && cartItems.length === 0 && (
+  <Empty setIsCartOpen={setIsCartOpen} />
+)}
       
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -61,6 +65,7 @@ const App = () => {
               setCartItems={setCartItems}
               cartItems={cartItems}
               setIsCartOpen={setIsCartOpen}
+              products={favorites}
             />
           }
         />

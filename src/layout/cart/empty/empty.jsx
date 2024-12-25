@@ -4,12 +4,13 @@ import { Button } from "../../../components/button/button";
 import ExitSvg from "../../../assets/svg/exitSvg";
 import styles from "./empty.module.sass";
 
-const Empty = ({ setIsVisibles }) => {
+const Empty = ({ setIsCartOpen }) => {
   return (
     <>
-      <div className={styles.exit_svg} onClick={() => setIsVisibles(false)}>
+    <div className={styles.exit_svg} onClick={() => setIsCartOpen(false)}>
         <ExitSvg />
       </div>
+
       <div className={styles.empty_container}>
         <h1 className={styles.empty_title}>КОРЗИНА</h1>
         <div className={styles.empty_svg}>
