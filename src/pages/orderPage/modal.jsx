@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./modal.module.sass"; // Импортируйте стили для модального окна
 import Title from "../../components/title/title";
+import { Button } from "../../components/button/button";
 
 const Modal = ({ isOpen, onClose, onGoHome }) => {
   if (!isOpen) return null; // Если модальное окно не открыто, ничего не рендерим
@@ -8,6 +9,9 @@ const Modal = ({ isOpen, onClose, onGoHome }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
+      <div className={styles.buttonContainer}>
+      <button onClick={onClose} className={styles.closeButton}>Х</button>
+      </div>
       <Title
                     categoryName="СПАСИБО"
                     subCategoryName="ВАШ ЗАКАЗ ПРИНЯТ"
@@ -15,12 +19,12 @@ const Modal = ({ isOpen, onClose, onGoHome }) => {
                   />
         <p>Мы обожаем встречать booriva на улице.  Так как всех не встретишь, отмечай нас в соц.сетях  и мы внутри взорвемся и закричим УРА! 
         Ставь тэг <span className={styles.boorivaTag}>#boorivagirls</span> чтобы быть в нашей тусовке.</p>
-        <div className={styles.buttonContainer}>
-          <button onClick={onClose} className={styles.closeButton}>Закрыть</button>
-          <button onClick={onGoHome} className={styles.goHomeButton}>На главную</button>
+        
+  
+          <Button  onClick={onGoHome} >На главную</Button>
         </div>
       </div>
-    </div>
+    
   );
 };
 
