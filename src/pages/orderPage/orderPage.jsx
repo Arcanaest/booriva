@@ -32,6 +32,7 @@ const OrderPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsModalOpen(true); // Открываем модальное окно
+    console.log("ррр");
   };
 
   const handleCloseModal = () => {
@@ -40,7 +41,7 @@ const OrderPage = () => {
 
   const handleGoHome = () => {
     // Логика для перехода на главную страницу
-    window.location.href = "/"; 
+    window.location.href = "/";
   };
 
   return (
@@ -123,7 +124,9 @@ const OrderPage = () => {
                     checked={selectedMethod === "postal"}
                     onChange={handleRadioChange}
                   />
-                  <label htmlFor="postal" className={styles.orderLabel}>Доставка в отделение почты</label>
+                  <label htmlFor="postal" className={styles.orderLabel}>
+                    Доставка в отделение почты
+                  </label>
                 </div>
                 <div className={styles.radioWrapper}>
                   <input
@@ -135,7 +138,10 @@ const OrderPage = () => {
                     checked={selectedMethod === "pickup"}
                     onChange={handleRadioChange}
                   />
-                  <label htmlFor="pickup" className={styles.orderLabel}>Самовывоз с нашего шоурума — <p className={styles.pink}>бесплатно</p></label>
+                  <label htmlFor="pickup" className={styles.orderLabel}>
+                    Самовывоз с нашего шоурума —{" "}
+                    <p className={styles.pink}>бесплатно</p>
+                  </label>
                 </div>
                 <div>
                   <textarea
@@ -150,15 +156,17 @@ const OrderPage = () => {
             </div>
           </div>
           <div className={styles.orderBtn}>
-            <Button type="submit" onClick={handleSubmit}>ПОДТВЕРДИТЬ ЗАКАЗ</Button>
+            <Button type="button" onClick={handleSubmit}>
+              ПОДТВЕРДИТЬ ЗАКАЗ
+            </Button>
           </div>
         </div>
         <div className={styles.rightSection}></div>
       </div>
-      <Modal 
-        isOpen={isModalOpen} 
-        onClose={handleCloseModal} 
-        onGoHome={handleGoHome} 
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onGoHome={handleGoHome}
       />
     </div>
   );
