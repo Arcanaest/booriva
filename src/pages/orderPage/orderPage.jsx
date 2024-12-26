@@ -1,7 +1,8 @@
-import React, { useState } from "react"; // Import useState
+import React, { useState } from "react";
 import Header from "../../layout/header/header";
 import { Button } from "../../components/button/button";
 import Title from "../../components/title/title";
+import Modal from "./modal";
 import styles from "./orderPage.module.sass";
 
 const OrderPage = () => {
@@ -13,6 +14,7 @@ const OrderPage = () => {
     phone: "",
     email: "",
   });
+  const [isModalOpen, setIsModalOpen] = useState(false); // Состояние для модального окна
 
   const handleRadioChange = (event) => {
     setSelectedMethod(event.target.value);
@@ -29,9 +31,16 @@ const OrderPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Form Data:", formData);
-    console.log("Selected Method:", selectedMethod);
-    console.log("Comment:", comment);
+    setIsModalOpen(true); // Открываем модальное окно
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Закрываем модальное окно
+  };
+
+  const handleGoHome = () => {
+    // Логика для перехода на главную страницу
+    window.location.href = "/"; 
   };
 
   return (
@@ -44,9 +53,9 @@ const OrderPage = () => {
               <div className={styles.firstSection}>
                 <div className={styles.leftElement}>
                   <Title
-                  categoryName="1"
-                  subCategoryName="КОНТАКТНЫЕ ДАННЫЕ"
-                  customClass={styles.customTitle}
+                    categoryName="1"
+                    subCategoryName="КОНТАКТНЫЕ ДАННЫЕ"
+                    customClass={styles.customTitle}
                   />
                 </div>
 
@@ -98,9 +107,9 @@ const OrderPage = () => {
             <div className={styles.secondSection}>
               <div className={styles.leftElement}>
                 <Title
-                categoryName="2"
-                subCategoryName="СПОСОБ ДОСТАВКИ"
-                customClass={styles.customTitle}
+                  categoryName="2"
+                  subCategoryName=" СПОСОБ ДОСТАВКИ"
+                  customClass={styles.customTitle}
                 />
               </div>
               <div className={styles.rightElement}>
@@ -141,11 +150,16 @@ const OrderPage = () => {
             </div>
           </div>
           <div className={styles.orderBtn}>
-            <Button type="submit">ПОДТВЕРДИТЬ ЗАКАЗ</Button>
+            <Button type="submit" onClick={handleSubmit}>ПОДТВЕРДИТЬ ЗАКАЗ</Button>
           </div>
         </div>
         <div className={styles.rightSection}></div>
       </div>
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal} 
+        onGoHome={handleGoHome} 
+      />
     </div>
   );
 };
