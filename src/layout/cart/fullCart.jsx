@@ -28,7 +28,7 @@ const FullCart = () => {
             <div className={styles.cartItems}>
               <div className={styles.cart_img}>
                 <img
-                  src={product.images[0]}  
+                  src={product.images}  
                   alt={product.name}
                   className={styles.prod_image}
                 />

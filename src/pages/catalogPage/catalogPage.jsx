@@ -6,7 +6,6 @@ import InstaPage from "../../layout/instaPage/instaPage";
 import ProductList from "../catalogPage/productList";
 import Sidebar from "./Sidebar";
 import Title from "../../components/title/title"; 
-import Header from "../../layout/header/header";
 import styles from "./catalogPage.module.sass";
 
 const CatalogPage = () => {

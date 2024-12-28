@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Slider from "./slider/slider";
 import Advantages from "../../components/advantages/advantages";
-import ProductCard from "../../components/productCard/productCard";
-import ProductList from "../catalogPage/productList";
 import styles from "./productShowCase.module.sass";
 import { useDispatch, useSelector } from "react-redux";
 import { setCartItems, setIsCartOpen } from "../../redux/cartSlice/cartSlice";

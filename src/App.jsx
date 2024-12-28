@@ -10,6 +10,7 @@ import Empty from "./layout/cart/empty/empty";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsCartOpen } from "./redux/cartSlice/cartSlice";
+import FullCart from "./layout/cart/fullCart";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ const App = () => {
     <div>
       <Header />
       <Cart />
-      {isCartOpen && cartItems.length === 0 && <Empty />}
+      {isCartOpen && cartItems.length === 0 && <ProductShowCase />}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
