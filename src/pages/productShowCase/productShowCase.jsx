@@ -7,12 +7,14 @@ import Advantages from "../../components/advantages/advantages";
 import ProductCard from "../../components/productCard/productCard";
 import ProductList from "../catalogPage/productList";
 import styles from "./productShowCase.module.sass";
+import { useDispatch, useSelector } from "react-redux";
+import { setCartItems, setIsCartOpen } from "../../redux/cartSlice/cartSlice";
 
-const ProductShowCase = ({
-  setCartItems,
-  cartItems,
-  setIsCartOpen,
-}) => {
+const ProductShowCase = () => {
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   const { id } = useParams();
   const [showCase, setShowCase] = useState([]);
   const [btnValue, setBtnValue] = useState("В корзину");
@@ -24,17 +26,17 @@ const ProductShowCase = ({
   }, [id]);
   const addProductToCart = () => {
     if (cartItems.some(({ product }) => product.id === showCase.id)) {
-      setCartItems((prev) =>
+      dispatch(setCartItems((prev) =>
         prev.map((item) =>
           item.product.id === showCase.id
             ? { ...item, count: item.count + 1 }
             : item
         )
-      );
+      ));
     } else {
-      setCartItems((prev) => [...prev, { product: showCase, count: 1 }]);
+      dispatch(setCartItems((prev) => [...prev, { product: showCase, count: 1 }]));
     }
-    setIsCartOpen(true);
+    dispatch(setIsCartOpen(true));
     setBtnValue("Добавлено");
     setTimeout(() => setBtnValue("В корзину"), 3000);
   };

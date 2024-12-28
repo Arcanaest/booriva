@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
 import CardCloseSvg from "../../assets/svg/cardCloseSvg";
 import styles from "./cart.module.sass";
+import { useDispatch, useSelector } from "react-redux";
+import { setCartItems } from "../../redux/cartSlice/cartSlice";
 
-const FullCart = ({ cartItems, setCartItems }) => {
+const FullCart = () => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   const totalSum = cartItems.reduce(
     (sum, { product, count }) => sum + product.price * count,
     0
@@ -12,18 +17,18 @@ const FullCart = ({ cartItems, setCartItems }) => {
     const updatedCart = cartItems.filter(
       ({ product }) => product.id !== productId
     );
-    setCartItems(updatedCart);
+    dispatch(setCartItems(updatedCart));  
   };
 
   return (
-    <>
+    <div>
       <div className={styles.cart_scroll}>
         {cartItems.map(({ product, count }) => (
           <Link to={`/product/${product.id}`} key={product.id}>
             <div className={styles.cartItems}>
               <div className={styles.cart_img}>
                 <img
-                  src={product.images}
+                  src={product.images[0]}  
                   alt={product.name}
                   className={styles.prod_image}
                 />
@@ -45,24 +50,21 @@ const FullCart = ({ cartItems, setCartItems }) => {
           </Link>
         ))}
       </div>
-      <>
-        {cartItems.length !== 0 && (
-          <>
-            <div className={styles.sum}>
-              <p className={styles.sum_text}>
-                Сумма заказа: <b>{totalSum}₽</b>
-              </p>
-              <p className={styles.sum_text}>
-                Стоимость доставки: <b>бесплатно</b>
-              </p>
-              <p className={styles.sum_check}>
-                К оплате: <b>{totalSum}₽</b>
-              </p>
-            </div>
-          </>
-        )}
-      </>
-    </>
+
+      {cartItems.length !== 0 && (
+        <div className={styles.sum}>
+          <p className={styles.sum_text}>
+            Сумма заказа: <b>{totalSum}₽</b>
+          </p>
+          <p className={styles.sum_text}>
+            Стоимость доставки: <b>бесплатно</b>
+          </p>
+          <p className={styles.sum_check}>
+            К оплате: <b>{totalSum}₽</b>
+          </p>
+        </div>
+      )}
+    </div>
   );
 };
 

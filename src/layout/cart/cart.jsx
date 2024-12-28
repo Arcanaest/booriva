@@ -4,20 +4,23 @@ import { Button } from "../../components/button/button";
 import FullCart from "./fullCart";
 import SliderCart from "./sliderCart/sliderCart";
 import styles from "./cart.module.sass";
+import { useSelector, useDispatch } from "react-redux";
+import { setIsCartOpen } from "../../redux/cartSlice/cartSlice";
 
-const Cart = ({
-  setIsCartOpen,
-  isCartOpen,
-  cartItems,
-  setCartItems,
-}) => {
+const Cart = () => {
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const isCartOpen = useSelector((state) => state.cart.isCartOpen);
+
+
   return (
     <div
       className={styles.wrapper + " " + (!isCartOpen && styles.wrapper_close)}
     >
       <div
         className={styles.background}
-        onClick={() => setIsCartOpen(false)}
+        onClick={() => dispatch(setIsCartOpen(false))}
       ></div>
       <div
         className={
@@ -28,7 +31,7 @@ const Cart = ({
           <>
             <div
               className={styles.exitCart_svg}
-              onClick={() => setIsCartOpen(false)}
+              onClick={() => dispatch(setIsCartOpen(false))}
             >
               <ExitSvg />
             </div>
@@ -38,9 +41,9 @@ const Cart = ({
           ""
         )}
         {cartItems.length === 0 ? (
-          <Empty setIsCartOpen={setIsCartOpen}/>
+          <Empty />
         ) : (
-          <FullCart cartItems={cartItems} setCartItems={setCartItems} />
+          <FullCart  />
         )}
         {cartItems.length !== 0 && <Button>Оформить заказ</Button>}
       </div>

@@ -3,11 +3,14 @@ import EmptySvg from "../../../assets/svg/emptySvg";
 import { Button } from "../../../components/button/button";
 import ExitSvg from "../../../assets/svg/exitSvg";
 import styles from "./empty.module.sass";
+import { useDispatch } from "react-redux";
+import { setIsCartOpen } from "../../../redux/cartSlice/cartSlice";
 
-const Empty = ({ setIsCartOpen }) => {
+const Empty = () => {
+  const dispatch = useDispatch();
   return (
     <>
-    <div className={styles.exit_svg} onClick={() => setIsCartOpen(false)}>
+    <div className={styles.exit_svg} onClick={() => dispatch(setIsCartOpen(false))}>
         <ExitSvg />
       </div>
 

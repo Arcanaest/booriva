@@ -7,10 +7,14 @@ import BoorivaLogoSvg from "../../assets/svg/boorivaLogoSvg";
 import InputSvg from "../../assets/svg/inputSvg";
 import LikeSvg from "../../assets/svg/likeSvg";
 import BagSvg from "../../assets/svg/bagSvg";
-
 import styles from "./header.module.sass";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsCartOpen } from "../../redux/cartSlice/cartSlice";
 
-const Header = ({ setIsCartOpen, cartItems }) => {
+const Header = () => {
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
   let [menu, setMenu] = useState([]);
   useEffect(() => {
     fetch("https://640ef1d54ed25579dc40e2a6.mockapi.io/menu")
@@ -64,7 +68,7 @@ const Header = ({ setIsCartOpen, cartItems }) => {
                 </div>
                 <div
                   className={styles.cart}
-                  onClick={() => setIsCartOpen(true)}
+                  onClick={() => dispatch(setIsCartOpen(true))}
                 >
                   <BagSvg />
                   {cartItemCount > 0 && (
