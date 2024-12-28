@@ -41,7 +41,7 @@ const App = () => {
     <div>
       <Header />
       <Cart />
-      {isCartOpen && cartItems.length === 0 && <ProductShowCase />}
+      {isCartOpen}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
