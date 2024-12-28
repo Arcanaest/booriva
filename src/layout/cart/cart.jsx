@@ -8,11 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { setIsCartOpen } from "../../redux/cartSlice/cartSlice";
 
 const Cart = () => {
-
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
-
 
   return (
     <div
@@ -40,11 +38,7 @@ const Cart = () => {
         ) : (
           ""
         )}
-        {cartItems.length === 0 ? (
-          <Empty />
-        ) : (
-          <FullCart  />
-        )}
+        {cartItems.length === 0 ? <Empty /> : <FullCart />}
         {cartItems.length !== 0 && <Button>Оформить заказ</Button>}
       </div>
       <SliderCart />
