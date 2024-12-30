@@ -22,7 +22,9 @@ const Header = () => {
       .then((res) => setMenu(res));
   }, []);
 
-  const cartItemCount = cartItems.reduce((total, { count }) => total + count, 0);
+  const cartItemCount = Array.isArray(cartItems)
+  ? cartItems.reduce((total, { count }) => total + count, 0)
+  : 0;
   return (
     <header className={styles.header}>
       <div className="wrapper">

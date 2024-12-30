@@ -12,7 +12,7 @@ const ProductShowCase = () => {
 
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
-
+  
   const { id } = useParams();
   const [showCase, setShowCase] = useState([]);
   const [btnValue, setBtnValue] = useState("В корзину");

@@ -6,11 +6,10 @@ import FavoritesPage from "./pages/favoritesPage/favoritesPage";
 import ProductShowCase from "./pages/productShowCase/productShowCase";
 import Header from "./layout/header/header";
 import Cart from "./layout/cart/cart";
-import Empty from "./layout/cart/empty/empty";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsCartOpen } from "./redux/cartSlice/cartSlice";
-import FullCart from "./layout/cart/fullCart";
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -41,8 +40,6 @@ const App = () => {
     <div>
       <Header />
       <Cart />
-      {isCartOpen}
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog/:id" element={<CatalogPage />} />

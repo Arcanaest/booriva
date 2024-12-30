@@ -8,11 +8,9 @@ const FullCart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  const totalSum = cartItems.reduce(
-    (sum, { product, count }) => sum + product.price * count,
-    0
-  );
-
+const totalSum = Array.isArray(cartItems)
+    ? cartItems.reduce((sum, { product, count }) => sum + product.price * count, 0)
+    : 0;
   const removeFromCart = (productId) => {
     const updatedCart = cartItems.filter(
       ({ product }) => product.id !== productId
