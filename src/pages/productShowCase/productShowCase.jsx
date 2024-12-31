@@ -9,10 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCartItems, setIsCartOpen } from "../../redux/cartSlice/cartSlice";
 
 const ProductShowCase = () => {
-
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
-  
+
   const { id } = useParams();
   const [showCase, setShowCase] = useState([]);
   const [btnValue, setBtnValue] = useState("В корзину");
@@ -22,19 +21,26 @@ const ProductShowCase = () => {
       .then((data) => setShowCase(data))
       .catch((err) => console.log(err));
   }, [id]);
+
   const addProductToCart = () => {
-    if (cartItems.some(({ product }) => product.id === showCase.id)) {
-      dispatch(setCartItems((prev) =>
-        prev.map((item) =>
+    if (Array.isArray(cartItems)) {
+      if (cartItems.some(({ product }) => product.id === showCase.id)) {
+        const updatedCart = cartItems.map((item) =>
           item.product.id === showCase.id
             ? { ...item, count: item.count + 1 }
             : item
-        )
-      ));
+        );
+        dispatch(setCartItems(updatedCart));
+      } else {
+        const updatedCart = [...cartItems, { product: showCase, count: 1 }];
+        dispatch(setCartItems(updatedCart));
+      }
     } else {
-      dispatch(setCartItems((prev) => [...prev, { product: showCase, count: 1 }]));
+      dispatch(setCartItems([{ product: showCase, count: 1 }]));
     }
+
     dispatch(setIsCartOpen(true));
+
     setBtnValue("Добавлено");
     setTimeout(() => setBtnValue("В корзину"), 3000);
   };

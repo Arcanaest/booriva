@@ -18,10 +18,12 @@ const totalSum = Array.isArray(cartItems)
     dispatch(setCartItems(updatedCart));  
   };
 
+  console.log("cartItems in FullCart:", cartItems);
+
   return (
     <div>
       <div className={styles.cart_scroll}>
-        {cartItems.map(({ product, count }) => (
+      {Array.isArray(cartItems) && cartItems.map(({ product, count }) => (
           <Link to={`/product/${product.id}`} key={product.id}>
             <div className={styles.cartItems}>
               <div className={styles.cart_img}>

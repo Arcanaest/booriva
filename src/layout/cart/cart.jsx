@@ -6,11 +6,17 @@ import SliderCart from "./sliderCart/sliderCart";
 import styles from "./cart.module.sass";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsCartOpen } from "../../redux/cartSlice/cartSlice";
+import { useEffect } from "react";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
+  console.log("cartItems in Cart:", cartItems);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   return (
     <div

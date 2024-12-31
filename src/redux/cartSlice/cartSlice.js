@@ -3,10 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    cartItems: localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart"))
-      : [],
-    isCartOpen: false
+    cartItems: (() => {
+      const cart = localStorage.getItem("cart");
+      try {
+        return cart ? JSON.parse(cart) : [];
+      } catch (error) {
+        console.error("Error parsing cart data:", error);
+        return [];
+      }
+    })(),
+    isCartOpen: false,
   },
   reducers: {
     setCartItems: (state, { payload }) => {
