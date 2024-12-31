@@ -25,6 +25,7 @@ const Modal = ({ isOpen, onClose, onGoHome }) => {
         </div>
       </div>
     
+    
   );
 };
 
