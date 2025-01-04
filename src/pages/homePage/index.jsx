@@ -11,7 +11,6 @@ import News from "./news/news";
 const HomePage = () => {
   return (
     <>
-      <Header />
       <main>
         <Categories />
         <News />

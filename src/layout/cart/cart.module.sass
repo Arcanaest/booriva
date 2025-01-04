@@ -1,0 +1,110 @@
+.wrapper
+    height: 100vh
+    display: flex
+    position: fixed
+    width: 100%
+    background-color: rgba(0, 0, 0, .77)
+    top: 0
+    left: 0
+    z-index: 5
+
+.wrapper_close
+    pointer-events: none
+    opacity: 0
+    z-index: -1
+
+.cart__wrapper
+    height: 100%
+    width: 518px
+    background-color: #fff
+    transition: .4s
+
+.background
+    width: calc(100% - 518px)
+    height: 100%
+    pointer-events: all
+
+.close
+    pointer-events: none
+    transform: translateX(100%)
+
+.open
+    pointer-events: all
+    transform: translateX(0)
+
+.cartItems
+    display: flex
+    width: 470px
+    margin: 0 auto
+
+.cart_img
+    width: 155px
+    height: 180px
+    margin-right: 10px
+    margin-bottom: 40px
+
+.prod_name
+    font-family: Montserrat
+    font-size: 16px
+    font-weight: 600
+    text-align: left
+    margin-bottom: 55px
+    margin-top: 30px
+
+.prod_price
+    font-family: Montserrat
+    font-size: 16px
+    font-weight: 700
+    text-align: left
+    color: var(--accent1)
+
+.cart_title
+    margin: 0 auto
+    width: 150px
+    font-family: Montserrat
+    font-size: 28px
+    font-weight: 700
+    padding-bottom: 80px
+    padding-top: 15px
+
+.exitCart_svg
+    text-align: right
+    margin-right: 40px
+    margin-top: 40px
+    cursor: pointer
+
+.sum
+    width: 314px
+    margin: 0 auto
+    padding-top: 30px
+
+.sum_text
+    display: flex
+    font-family: Montserrat
+    font-size: 16px
+    font-weight: 400
+    color: var(--accent1)
+    justify-content: space-between
+
+.sum_check
+    display: flex
+    font-family: Montserrat
+    font-size: 25px
+    font-weight: 400
+    justify-content: space-between
+    margin-top: 40px
+
+.cart_discr
+    position: relative
+
+.close_svg
+    position: absolute
+    top: 33px
+    right: -20px
+
+.cart_scroll
+    height: 409px
+    overflow-y: auto
+    scrollbar-width: thin
+    scrollbar-color: var(--accent1) white
+

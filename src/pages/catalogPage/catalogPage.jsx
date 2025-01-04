@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import qs from "qs";
-import Header from "../../layout/header/header";
 import InstaPage from "../../layout/instaPage/instaPage";
 import ProductList from "../catalogPage/productList";
 import Sidebar from "./Sidebar";
-import Title from "../../components/title/title"; // Импортируем Title 
+import Title from "../../components/title/title"; 
 import styles from "./catalogPage.module.sass";
 
 const CatalogPage = () => {
@@ -108,13 +107,14 @@ const CatalogPage = () => {
   }, [products, location.search]);
 
   const toNavigate = (id) => {
-    navigate("?subcatid=${id}");
+    navigate(`?subcatid=${id}`);
   };
+  console.log(filteredProducts);
 
   const filterByPrice = (priceRange) => {
     const params = qs.parse(location.search.substring(1));
     const newParams = { ...params, price: priceRange };
-    navigate("?${qs.stringify(newParams)}");
+    navigate(`?${qs.stringify(newParams)}`);
   };
 
   if (error) return <p>Ошибка: {error}</p>;
@@ -122,7 +122,7 @@ const CatalogPage = () => {
   return (
     <>
       {" "}
-      <Header />{" "}
+    {" "}
       <main>
         {" "}
         <div className={"wrapper " + styles.catalog}>
