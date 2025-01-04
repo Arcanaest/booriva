@@ -7,6 +7,7 @@ import styles from "./cart.module.sass";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsCartOpen } from "../../redux/cartSlice/cartSlice";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -45,7 +46,11 @@ const Cart = () => {
           ""
         )}
         {cartItems.length === 0 ? <Empty /> : <FullCart />}
-        {cartItems.length !== 0 && <Button>Оформить заказ</Button>}
+        <div>
+          <Link to="/OrderPage">
+            {cartItems.length !== 0 && <Button>Оформить заказ</Button>}
+          </Link>
+        </div>
       </div>
       <SliderCart />
     </div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Header from "../../layout/header/header";
 import { Button } from "../../components/button/button";
 import Title from "../../components/title/title";
 import Modal from "./modal";
@@ -40,13 +39,13 @@ const OrderPage = () => {
   };
 
   const handleGoHome = () => {
-    // Логика для перехода на главную страницу
+
     window.location.href = "/";
   };
 
   return (
     <div>
-      <Header />
+
       <div className="wrapper">
         <div className={styles.orderContainer}>
           <div className={styles.leftSection}>
