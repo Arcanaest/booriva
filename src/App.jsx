@@ -3,6 +3,7 @@ import HomePage from "./pages/homePage";
 import Footer from "./layout/footer/footer";
 import CatalogPage from "./pages/catalogPage/catalogPage";
 import FavoritesPage from "./pages/favoritesPage/favoritesPage";
+import OrderPage from "./pages/orderPage/orderPage";
 import ProductShowCase from "./pages/productShowCase/productShowCase";
 import Header from "./layout/header/header";
 import Cart from "./layout/cart/cart";
@@ -47,6 +48,8 @@ const App = () => {
         <Route path="/product/:id" element={<ProductShowCase />} />
 
         <Route path="/favoritesPage" element={<FavoritesPage />} />
+        <Route path="/orderPage" element={<OrderPage />} />
+
       </Routes>
       <Footer />
     </div>
