@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../../components/productCard/productCard";
-import styles from "./productList.module.sass";
 import { useDispatch, useSelector } from "react-redux";
+import styles from "./productList.module.sass";
 
 
 const ProductList = ({ products }) => {

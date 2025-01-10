@@ -8,7 +8,6 @@ const Sidebar = ({ subcategories, activeSubcategory, toNavigate, activePriceFilt
   return (
     <div className={styles.catalog__left__side}>
       <div className={styles.title}>
-        <h2>Каталог</h2>
       </div>
       <div className={styles.subcategoryWrapper}>
         <Subcategories

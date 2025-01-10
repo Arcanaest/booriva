@@ -7,16 +7,24 @@ import BoorivaLogoSvg from "../../assets/svg/boorivaLogoSvg";
 import InputSvg from "../../assets/svg/inputSvg";
 import LikeSvg from "../../assets/svg/likeSvg";
 import BagSvg from "../../assets/svg/bagSvg";
-
 import styles from "./header.module.sass";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsCartOpen } from "../../redux/cartSlice/cartSlice";
 
-const Header = ({ setIsCartOpen }) => {
+const Header = () => {
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
   let [menu, setMenu] = useState([]);
   useEffect(() => {
     fetch("https://640ef1d54ed25579dc40e2a6.mockapi.io/menu")
       .then((res) => res.json())
       .then((res) => setMenu(res));
   }, []);
+
+  const cartItemCount = Array.isArray(cartItems)
+  ? cartItems.reduce((total, { count }) => total + count, 0)
+  : 0;
   return (
     <header className={styles.header}>
       <div className="wrapper">
@@ -54,7 +62,7 @@ const Header = ({ setIsCartOpen }) => {
                 </div>
                 <span className={styles.input}>Поиск</span>
               </div>
-              <div className={styles.nav__righ__icons}>
+              <div className={styles.nav__right__icons}>
                 <div className={styles.heart}>
                   <Link to="/FavoritesPage">
                     <LikeSvg></LikeSvg>
@@ -62,9 +70,12 @@ const Header = ({ setIsCartOpen }) => {
                 </div>
                 <div
                   className={styles.cart}
-                  onClick={() => setIsCartOpen(true)}
+                  onClick={() => dispatch(setIsCartOpen(true))}
                 >
                   <BagSvg />
+                  {cartItemCount > 0 && (
+                  <div className={styles.cart__count}>{cartItemCount}</div>
+                )}
                 </div>
               </div>
             </div>

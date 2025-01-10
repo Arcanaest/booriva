@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Header from "../../layout/header/header";
 import InstaPage from "../../layout/instaPage/instaPage";
 import ProductCard from "../../components/productCard/productCard";
 import Title from "../../components/title/title";
@@ -39,7 +38,6 @@ const FavoritesPage = () => {
 
   return (
     <div>
-      <Header />
       <Title
         categoryName="СПИСОК ЖЕЛАНИЙ"
         subCategoryName="ТВОЙ ТАЙНЫЙ СПИСОК ЖЕЛАНИЙ"

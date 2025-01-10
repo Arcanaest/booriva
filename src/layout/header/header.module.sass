@@ -80,19 +80,34 @@
     color: var(--main_black)
     outline: none
 
-.nav__righ__icons
+.nav__right__icons
     display: flex
     align-items: center
     gap: 33px
 
 .cart
     cursor: pointer
+    position: relative
     svg
         stroke: #1F1F1F
         transition: .2s
     &:hover svg
         stroke: var(--accent2)
-    
+    &__count
+        position: absolute
+        top: -5px
+        right: -5px
+        background-color: var(--accent2)
+        color: white
+        font-size: 11px
+        font-weight: bold
+        width: 17px
+        height: 17px
+        display: flex
+        align-items: center
+        justify-content: center
+        border-radius: 50%
+
 @media (max-width: 1162px)
     .nav__left
         flex-direction: column

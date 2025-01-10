@@ -42,7 +42,7 @@ const InstaPage = () => {
         <div className={styles.leftSection2}>
           <div className={styles.leftSectionCaption}>INSTAGRAM</div>
           <div className={styles.leftSectionText}>
-            Мы в экстазе, когда ты нас отмечаешь) Отмечай плз чаще
+            Мы в экстазе, когда ты нас отмечаешь) Отмечай плиз чаще
           </div>
         </div>
         <div className={styles.leftSectionImages}>

@@ -5,8 +5,7 @@ import qs from "qs";
 import InstaPage from "../../layout/instaPage/instaPage";
 import ProductList from "../catalogPage/productList";
 import Sidebar from "./Sidebar";
-import Title from "../../components/title/title"; // Импортируем Title 
-import Header from "../../layout/header/header";
+import Title from "../../components/title/title"; 
 import styles from "./catalogPage.module.sass";
 
 const CatalogPage = () => {
